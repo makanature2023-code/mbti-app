@@ -1,89 +1,118 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T8: 나의 향기 찾기</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAKA NATURE | 나의 향기 찾기</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: url('A_web_design_interface_for_selecting_Taean_fragran.png') no-repeat center center / cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.35);
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 20px;
+      padding: 40px 30px;
+      color: #333;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    .logo {
+      width: 160px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 1.4em;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 1em;
+    }
+
+    select {
+      background: #f5f5f5;
+    }
+
+    button {
+      background: linear-gradient(135deg, #0078c1, #2f80ed);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 0.9em;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <div class="app-container">
-        <!-- Start Screen -->
-        <div id="start-screen" class="screen active">
-            <div class="content">
-                <h1>나의 성향과 어울리는<br>태안의 향기 찾기</h1>
-                <p>간단한 테스트를 통해 당신의 성향에 맞는<br>태안8경 시그니처 향을 추천해 드립니다.</p>
-                <div class="form-group">
-                    <label>성별</label>
-                    <div class="options">
-                        <button class="option" data-group="gender" data-value="male">남성</button>
-                        <button class="option" data-group="gender" data-value="female">여성</button>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>나이</label>
-                    <div class="options">
-                        <button class="option" data-group="age" data-value="10s">10대</button>
-                        <button class="option" data-group="age" data-value="20s">20대</button>
-                        <button class="option" data-group="age" data-value="30s">30대</button>
-                        <button class="option" data-group="age" data-value="40s">40대</button>
-                        <button class="option" data-group="age" data-value="50s">50대</button>
-                        <button class="option" data-group="age" data-value="60s+">60대 이상</button>
-                    </div>
-                </div>
-                <button id="start-btn" class="primary-btn" disabled>시작하기</button>
-            </div>
-        </div>
+  <div class="overlay"></div>
+  <div class="content">
+    <img src="로고2-배경제거.png" alt="MAKA NATURE" class="logo">
+    <h1>나의 성향과 어울리는<br>태안의 향기 찾기</h1>
 
-        <!-- Quiz Screen -->
-        <div id="quiz-screen" class="screen">
-            <div class="content">
-                <div id="progress-bar">
-                    <div id="progress"></div>
-                </div>
-                <p id="question-text"></p>
-                <div id="answer-options" class="options-vertical"></div>
-            </div>
-        </div>
+    <select>
+      <option>성별 선택</option>
+      <option>남성</option>
+      <option>여성</option>
+    </select>
+    <select>
+      <option>나이대 선택</option>
+      <option>10대</option>
+      <option>20대</option>
+      <option>30대</option>
+      <option>40대</option>
+      <option>50대 이상</option>
+    </select>
 
-        <!-- Result Screen -->
-        <div id="result-screen" class="screen">
-            <div class="content">
-                <div class="result-card">
-                    <img id="result-img" src="" alt="추천 향기 이미지">
-                    <div class="result-text">
-                        <p class="result-intro">당신의 성향에 어울리는 향기는</p>
-                        <h2 id="scent-name"></h2>
-                        <p class="mbti-type-display">MBTI: <span id="mbti-type"></span></p>
-                        <p id="scent-description"></p>
-                    </div>
-                </div>
-                <div class="result-buttons">
-                    <a id="purchase-link" href="#" target="_blank" class="primary-btn">구매하기</a>
-                    <button id="restart-btn" class="secondary-btn">다시하기</button>
-                </div>
-            </div>
-        </div>
-        <div class="app-footer">
-            <p>우리는 태안의 바다를 지키고, 미소짓는 돌고래 상괭이를 보호합니다.</p>
-        </div>
-    </div>
-    <script src="script.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').then(registration => {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }, err => {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-        });
-      }
-    </script>
+    <button onclick="location.href='test.html'">시작하기</button>
+
+    <footer>🌊 우리는 태안의 바다와 상괭이를 사랑합니다.</footer>
+  </div>
 </body>
 </html>
-<!-- trigger build -->
