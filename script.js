@@ -31,25 +31,25 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeQuestionSet = [];
 
     const scents = {
-        '백화산 (Mountain Mist)': { img: '1.백화산.jpg', desc: '계획적이고 전략적인 당신에게, 숲의 고요함은 머릿속의 복잡함을 맑게 정리해 줍니다. 레몬유칼립투스의 깔끔한 향이 깊은 사고와 집중을 도와주는 숲속 명상 같은 시간.' },
-        '할미·할아비바위 (Eternal Love)': { img: '8.할미 할아비바위.jpg', desc: '섬세한 감성과 깊은 내면을 가진 당신에게, 장미와 바닐라의 향은 오래된 사랑의 기억처럼 따뜻하게 스며듭니다. 감정이 흐르고 머물 수 있는 공간 같은 향기.' },
-        '안흥진성 (Ocean Wake)': { img: '2. 안흥진성.jpg', desc: '분명하고 책임감 있는 당신에게, 바다의 기운이 새로운 결단의 힘이 되어줍니다. 페퍼민트와 유칼립투스가 머릿속을 정리하고 나아갈 방향을 선명하게 밝혀줍니다.' },
-        '안면송림 (Pine Whisper)': { img: '3.안면송림.jpg', desc: '배려 깊고 따뜻한 당신에게, 소나무 숲의 향은 마음에 잔잔한 안식을 선물합니다. 피톤치드의 부드러운 울림이 온기를 품은 안정감을 만들어줍니다.' },
-        '만리포 (Sunset Breeze)': { img: '4.만리포.jpg', desc: '사람을 이끄는 따뜻한 리더십을 가진 당신에게, 노을빛 향기는 정서적 공감을 넓히는 다리입니다. 유자와 오렌지의 부드러운 감귤향은 마음을 열고 포용하게 합니다.' },
-        '신두사구 (Golden Sand)': { img: '5.신두사구.jpg', desc: '감성이 풍부한 당신에게, 따사로운 모래의 향기는 예술적인 상상을 자극합니다. 프랑킨센스와 샌달우드의 조화는 내면의 감정을 부드럽게 꺼내줍니다.' },
-        '가의도 (Island Bloom)': { img: '6.가의도.jpg', desc: '아이디어가 넘치는 당신에게, 햇살 속 꽃내음은 영감을 가득 품은 아침 같은 향. 시트러스와 꽃향이 긍정 에너지를 더해줍니다.' },
-        '몽산해변 (Wave of Sleep)': { img: '7.몽산해변.jpg', desc: '깊이 있는 통찰과 감성을 가진 당신에게, 파도에 잠긴 향기는 내면의 평화를 회복시켜 줍니다. 네롤리와 라벤더가 조용한 밤의 안식처가 되어줍니다.' },
+        '백화산 (Mountain Mist)': { img: 'scent1.jpg', desc: '계획적이고 전략적인 당신에게, 숲의 고요함은 머릿속의 복잡함을 맑게 정리해 줍니다. 레몬유칼립투스의 깔끔한 향이 깊은 사고와 집중을 도와주는 숲속 명상 같은 시간.' },
+        '할미·할아비바위 (Eternal Love)': { img: 'scent8.jpg', desc: '섬세한 감성과 깊은 내면을 가진 당신에게, 장미와 바닐라의 향은 오래된 사랑의 기억처럼 따뜻하게 스며듭니다. 감정이 흐르고 머물 수 있는 공간 같은 향기.' },
+        '안흥진성 (Ocean Wake)': { img: 'scent2.jpg', desc: '분명하고 책임감 있는 당신에게, 바다의 기운이 새로운 결단의 힘이 되어줍니다. 페퍼민트와 유칼립투스가 머릿속을 정리하고 나아갈 방향을 선명하게 밝혀줍니다.' },
+        '안면송림 (Pine Whisper)': { img: 'scent3.jpg', desc: '배려 깊고 따뜻한 당신에게, 소나무 숲의 향은 마음에 잔잔한 안식을 선물합니다. 피톤치드의 부드러운 울림이 온기를 품은 안정감을 만들어줍니다.' },
+        '만리포 (Sunset Breeze)': { img: 'scent4.jpg', desc: '사람을 이끄는 따뜻한 리더십을 가진 당신에게, 노을빛 향기는 정서적 공감을 넓히는 다리입니다. 유자와 오렌지의 부드러운 감귤향은 마음을 열고 포용하게 합니다.' },
+        '신두사구 (Golden Sand)': { img: 'scent5.jpg', desc: '감성이 풍부한 당신에게, 따사로운 모래의 향기는 예술적인 상상을 자극합니다. 프랑킨센스와 샌달우드의 조화는 내면의 감정을 부드럽게 꺼내줍니다.' },
+        '가의도 (Island Bloom)': { img: 'scent6.jpg', desc: '아이디어가 넘치는 당신에게, 햇살 속 꽃내음은 영감을 가득 품은 아침 같은 향. 시트러스와 꽃향이 긍정 에너지를 더해줍니다.' },
+        '몽산해변 (Wave of Sleep)': { img: 'scent7.jpg', desc: '깊이 있는 통찰과 감성을 가진 당신에게, 파도에 잠긴 향기는 내면의 평화를 회복시켜 줍니다. 네롤리와 라벤더가 조용한 밤의 안식처가 되어줍니다.' },
     };
 
     const mbtiScentMapping = {
         INTJ: '백화산 (Mountain Mist)', ESFP: '백화산 (Mountain Mist)',
         INFP: '할미·할아비바위 (Eternal Love)', ESTP: '할미·할아비바위 (Eternal Love)',
-        ESTJ: '안흥진성 (Ocean Wake)', INFP: '안흥진성 (Ocean Wake)',
+        ESTJ: '안흥진성 (Ocean Wake)', INTP: '안흥진성 (Ocean Wake)',
         ISFJ: '안면송림 (Pine Whisper)', ENTP: '안면송림 (Pine Whisper)',
         ENFJ: '만리포 (Sunset Breeze)', ISTP: '만리포 (Sunset Breeze)',
         ISFP: '신두사구 (Golden Sand)', ENTJ: '신두사구 (Golden Sand)',
         ENFP: '가의도 (Island Bloom)', ISTJ: '가의도 (Island Bloom)',
-        INFJ: '몽산해변 (Wave of Sleep)', ESTP: '몽산해변 (Wave of Sleep)'
+        INFJ: '몽산해변 (Wave of Sleep)', ESFJ: '몽산해변 (Wave of Sleep)'
     };
 
     const questions = {

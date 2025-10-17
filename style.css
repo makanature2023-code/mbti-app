@@ -4,14 +4,12 @@
 body {
   margin: 0;
   font-family: 'Pretendard', sans-serif;
-  background: url('bg_main.jpg') no-repeat center center / cover;
+  background-color: #1a1a1a; /* Dark gray background */
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .overlay {
@@ -30,12 +28,12 @@ body {
   text-align: center;
   width: 90%;
   max-width: 500px;
-  background: rgba(255,255,255,0.85);
+  background: url('bg_main.png') no-repeat center center / cover;
   border-radius: 20px;
   padding: 40px 30px;
-  color: #333;
+  color: white; /* Changed to white for readability */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Added for readability */
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  backdrop-filter: blur(6px);
 }
 
 .logo {
@@ -46,6 +44,10 @@ body {
 h1, h2 {
   font-weight: 600;
   color: #1a1a1a;
+}
+
+.content h1, .content h2 {
+    color: white;
 }
 
 h1 {
@@ -64,7 +66,7 @@ button {
   border-radius: 10px;
   border: none;
   font-size: 1em;
-  background: linear-gradient(135deg, #0078c1, #2f80ed);
+  background: #2E8B57; /* SeaGreen */
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -114,11 +116,12 @@ button:disabled {
 
 .option {
     padding: 10px 20px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.2s;
-    background-color: #f5f5f5;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
 }
 
 .option.selected {
@@ -130,8 +133,7 @@ button:disabled {
 
 /* Quiz Screen Specifics */
 #quiz-screen {
-    background-color: rgba(255, 255, 255, 0.98);
-    color: #333;
+    color: white;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -177,9 +179,10 @@ button:disabled {
 }
 
 #answer-options button {
-    background: #f0f0f0;
-    color: #333;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
     font-weight: 400;
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 #answer-options button:hover {
@@ -201,8 +204,9 @@ button:disabled {
 }
 
 #mbti-type {
-    font-size: 1.2em;
-    color: #555;
+    font-size: 2em;
+    font-weight: 600;
+    color: white;
     margin-bottom: 20px;
 }
 
@@ -212,4 +216,21 @@ button:disabled {
 
 #restart-btn {
     background: #555;
+}
+
+/* Result Screen Content Override */
+#result-screen .content {
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+  text-shadow: none;
+  backdrop-filter: blur(6px);
+}
+
+#result-screen .content h2,
+#result-screen .content #scent-name {
+    color: #1a1a1a;
+}
+
+#result-screen .content #mbti-type {
+    color: #555;
 }

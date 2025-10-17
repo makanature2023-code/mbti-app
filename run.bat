@@ -1,4 +1,4 @@
 @echo off
 cd /d %~dp0
-start index.html
-exit
+start http://localhost:8080
+start "" /min node server.js

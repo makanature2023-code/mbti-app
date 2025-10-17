@@ -7,7 +7,8 @@ const PORT = 8080;
 
 const server = http.createServer((req, res) => {
     // Sanitize the requested URL to prevent directory traversal attacks
-    const sanitizedUrl = path.normalize(req.url).replace(/^(\.\.[/\\])+/, '');
+    const decodedUrl = decodeURIComponent(req.url);
+    const sanitizedUrl = path.normalize(decodedUrl).replace(/^(\.\.[/\\])+/, '');
     let filePath = path.join(__dirname, sanitizedUrl === '/' ? 'index.html' : sanitizedUrl);
 
     const extname = String(path.extname(filePath)).toLowerCase();
