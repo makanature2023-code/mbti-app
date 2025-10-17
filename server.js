@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
 
     fs.readFile(filePath, (error, content) => {
         if (error) {
-            if (error.code == 'ENOENT') {
+                        if (error.code == 'ENOENT' || error.code == 'EISDIR') {
                 // If the file is not found, it might be a PWA route. Serve index.html.
                 fs.readFile(path.join(__dirname, 'index.html'), (err, content) => {
                     if (err) {
