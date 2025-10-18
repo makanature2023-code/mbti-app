@@ -234,3 +234,6 @@ button:disabled {
 #result-screen .content #mbti-type {
     color: #555;
 }
+body, .screen, .overlay {
+  background-color: transparent !important;
+}
