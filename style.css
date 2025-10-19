@@ -37,7 +37,7 @@
     37     display: flex;
     38     flex-direction: column;
     39     /* 여기에 추가할 코드 */
-    40     background-image: url('bg_main.png');
+    40     background-image: url('https://makanature2023-code.github.io/mbti-app/bg_main.png');
     41     background-size: contain;
     42     background-position: center;
     43     background-repeat: no-repeat;
@@ -283,5 +283,6 @@
    283     color: var(--subtle-text-color);
    284     line-height: 1.5;
    285 }
+
 
 
