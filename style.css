@@ -14,8 +14,10 @@
 body {
     font-family: var(--font-family-main);
     background-color: var(--background-color);
-    background-image: linear-gradient(to bottom, var(--background-color) 0%, #e8f4f8 100%);
-    display: flex;
+    background-image: url('bg_main.png');
+    background-size: cover; /* 이미지가 배경을 꽉 채우도록 */
+   background-position: center; /* 이미지를 중앙에 배치 */
+   background-repeat: no-repeat; /* 이미지가 반복되지 않도록 */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -278,3 +280,4 @@ label {
     color: var(--subtle-text-color);
     line-height: 1.5;
 }
+
