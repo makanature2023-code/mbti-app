@@ -1,105 +1,357 @@
-1 <!DOCTYPE html>
-    2 <html lang="ko">
-    3 <head>
-    4     <meta charset="UTF-8">
-    5     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    6     <title>T8: 나의 향기 찾기</title>
-       8     <link rel="preconnect" href="https://fonts.googleapis.com">
-    9     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   10     <link href=
-      "https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&di
-      splay=swap" rel="stylesheet">
-   11     <link rel="stylesheet" href="https://makanature2023-code.github.io/mbti-app/style.css?v=999">
-         <style>
-@import url('https://makanature2023-code.github.io/mbti-app/style.css?v=999');
-</style>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T8: 나의 향기 찾기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 
+  <style>
+  :root {
+    --primary-color: #005a9c;
+    --primary-hover-color: #00487d;
+    --secondary-color: #e8f4f8;
+    --accent-color: #f7c548;
+    --background-color: #f0f7fa;
+    --card-background-color: #ffffff;
+    --text-color: #2c3e50;
+    --subtle-text-color: #576c7f;
+    --border-color: #dceaf2;
+    --font-family-main: 'Inter', 'Noto Sans KR', sans-serif;
+  }
 
-   12     <link rel="manifest" href="manifest.json">
-   13 </head>
-   14 <body>
-   15     <div class="app-container">
-   16         <!-- Start Screen -->
-   17         <div id="start-screen" class="screen active">
-   18             <div class="content">
-   19                 <h1>나의 성향과 어울리는<br>태안의 향기 찾기</h1>
-   20                 <p>간단한 테스트를 통해 당신의 성향에 맞는<br>태안8경 시그니처 향을 추천해
-      드립니다.</p>
-   21                 <div class="form-group">
-   22                     <label>성별</label>
-   23                     <div class="options">
-   24                         <button class="option" data-group="gender" data-value="male">남성</
-      button>
-   25                         <button class="option" data-group="gender" data-value="female">여성</
-      button>
-   26                     </div>
-   27                 </div>
-   28                 <div class="form-group">
-   29                     <label>나이</label>
-   30                     <div class="options">
-   31                         <button class="option" data-group="age" data-value="10s">10대</button>
-   32                         <button class="option" data-group="age" data-value="20s">20대</button>
-   33                         <button class="option" data-group="age" data-value="30s">30대</button>
-   34                         <button class="option" data-group="age" data-value="40s">40대</button>
-   35                         <button class="option" data-group="age" data-value="50s">50대</button>
-   36                         <button class="option" data-group="age" data-value="60s+">60대 이상</
-      button>
-   37                     </div>
-   38                 </div>
-   39                 <button id="start-btn" class="primary-btn" disabled>시작하기</button>
-   40             </div>
-   41         </div>
-   42
-   43         <!-- Quiz Screen -->
-   44         <div id="quiz-screen" class="screen">
-   45             <div class="content">
-   46                 <div id="progress-bar">
-   47                     <div id="progress"></div>
-   48                 </div>
-   49                 <p id="question-text"></p>
-   50                 <div id="answer-options" class="options-vertical"></div>
-   51             </div>
-   52         </div>
-   53
-   54         <!-- Result Screen -->
-   55         <div id="result-screen" class="screen">
-   56             <div class="content">
-   57                 <div class="result-card">
-   58                     <img id="result-img" src="" alt="추천 향기 이미지">
-   59                     <div class="result-text">
-   60                         <p class="result-intro">당신의 성향에 어울리는 향기는</p>
-   61                         <h2 id="scent-name"></h2>
-   62                         <p class="mbti-type-display">MBTI: <span id="mbti-type"></span></p>
-   63                         <p class="scent-description"></p>
-   64                     </div>
-   65                 </div>
-   66                 <div class="result-buttons">
-   67                     <a id="purchase-link" href="#" target="_blank" class="primary-btn">구매하기
-      </a>
-   68                     <button id="restart-btn" class="secondary-btn">다시하기</button>
-   69                 </div>
-   70             </div>
-   71         </div>
-   72         <div class="app-footer">
-   73             <p>우리는 태안의 바다를 지키고, 미소짓는 돌고래 상괭이를 보호합니다.</p>
-   74         </div>
-   75     </div>
-   76     <script src="script.js"></script>
-   77     <script>
-   78       if ('serviceWorker' in navigator) {
-   79         window.addEventListener('load', () => {
-   80           navigator.serviceWorker.register('./sw.js').then(registration => {
-   81             console.log('ServiceWorker registration successful with scope: ',
-      registration.scope);
-   82           }, err => {
-   83             console.log('ServiceWorker registration failed: ', err);
-   84           });
-   85         });
-   86       }
-   87     </script>
-   88 </body>
-   89 </html>
+  body {
+    font-family: var(--font-family-main);
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
+  .app-container {
+    width: 100%;
+    max-width: 420px;
+    height: 90vh;
+    max-height: 800px;
+    background-color: var(--card-background-color);
+    border-radius: 24px;
+    box-shadow: 0 10px 50px rgba(0, 90, 156, 0.15);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://makanature2023-code.github.io/mbti-app/bg_main.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
+  .screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 35px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    visibility: hidden;
+  }
 
+  .screen.active {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
 
+  .content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  h1 {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.8em;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: var(--subtle-text-color);
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 700;
+    color: var(--text-color);
+    font-size: 1em;
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .option {
+    flex-grow: 1;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 10px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--subtle-text-color);
+    transition: all 0.2s ease;
+  }
+
+  .option:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+  }
+
+  .option.selected {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+  }
+
+  .primary-btn, .secondary-btn {
+    border: none;
+    border-radius: 12px;
+    padding: 16px 20px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    width: 100%;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .primary-btn {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .primary-btn:hover {
+    background-color: var(--primary-hover-color);
+    transform: scale(1.03);
+  }
+
+  .primary-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .secondary-btn {
+    background-color: var(--secondary-color);
+    color: var(--subtle-text-color);
+  }
+
+  .secondary-btn:hover {
+    background-color: #dceaf2;
+  }
+
+  #progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+
+  #progress {
+    width: 0%;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #question-text {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 40px;
+    line-height: 1.5;
+  }
+
+  .options-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .quiz-option {
+    width: 100%;
+    padding: 18px;
+    text-align: center;
+    font-size: 1.05em;
+  }
+
+  #result-screen .content {
+    justify-content: space-between;
+  }
+
+  .result-card {
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #fff;
+  }
+
+  #result-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .result-intro {
+    font-size: 1em;
+    margin-bottom: 5px !important;
+  }
+
+  #scent-name {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0 0 5px 0;
+  }
+
+  .mbti-type-display {
+    font-size: 0.9em;
+    color: var(--subtle-text-color);
+    background-color: var(--secondary-color);
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+
+  #scent-description {
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--text-color);
+    text-align: left;
+  }
+
+  .result-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .app-footer {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .app-footer p {
+    margin: 0;
+    font-size: 0.8em;
+    color: var(--subtle-text-color);
+    line-height: 1.5;
+  }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div id="start-screen" class="screen active">
+      <div class="content">
+        <h1>나의 성향과 어울리는<br>태안의 향기 찾기</h1>
+        <p>간단한 테스트를 통해 당신의 성향에 맞는<br>태안8경 시그니처 향을 추천해 드립니다.</p>
+        <div class="form-group">
+          <label>성별</label>
+          <div class="options">
+            <button class="option" data-group="gender" data-value="male">남성</button>
+            <button class="option" data-group="gender" data-value="female">여성</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>나이</label>
+          <div class="options">
+            <button class="option" data-group="age" data-value="10s">10대</button>
+            <button class="option" data-group="age" data-value="20s">20대</button>
+            <button class="option" data-group="age" data-value="30s">30대</button>
+            <button class="option" data-group="age" data-value="40s">40대</button>
+            <button class="option" data-group="age" data-value="50s">50대</button>
+            <button class="option" data-group="age" data-value="60s+">60대 이상</button>
+          </div>
+        </div>
+        <button id="start-btn" class="primary-btn" disabled>시작하기</button>
+      </div>
+    </div>
+
+    <div id="quiz-screen" class="screen">
+      <div class="content">
+        <div id="progress-bar"><div id="progress"></div></div>
+        <p id="question-text"></p>
+        <div id="answer-options" class="options-vertical"></div>
+      </div>
+    </div>
+
+    <div id="result-screen" class="screen">
+      <div class="content">
+        <div class="result-card">
+          <img id="result-img" src="" alt="추천 향기 이미지">
+          <div class="result-text">
+            <p class="result-intro">당신의 성향에 어울리는 향기는</p>
+            <h2 id="scent-name"></h2>
+            <p class="mbti-type-display">MBTI: <span id="mbti-type"></span></p>
+            <p class="scent-description"></p>
+          </div>
+        </div>
+        <div class="result-buttons">
+          <a id="purchase-link" href="#" target="_blank" class="primary-btn">구매하기</a>
+          <button id="restart-btn" class="secondary-btn">다시하기</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-footer">
+      <p>우리는 태안의 바다를 지키고, 미소짓는 돌고래 상괭이를 보호합니다.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
