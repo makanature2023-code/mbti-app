@@ -13,31 +13,34 @@
 
 body {
     font-family: var(--font-family-main);
-    background-color: var(--background-color);
-    background-image: url('bg_main.png');
-    background-size: cover; /* 이미지가 배경을 꽉 채우도록 */
-   background-position: center; /* 이미지를 중앙에 배치 */
-   background-repeat: no-repeat; /* 이미지가 반복되지 않도록 */
+     background-color: var(--background-color);
+     /* background-image 관련 코드는 모두 제거합니다. */
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+ -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 }
 
 .app-container {
-    width: 100%;
-    max-width: 420px;
-    height: 90vh;
-    max-height: 800px;
-    background-color: var(--card-background-color);
-    border-radius: 24px;
-    box-shadow: 0 10px 50px rgba(0, 90, 156, 0.15);
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+    3     max-width: 420px;
+    4     height: 90vh;
+    5     max-height: 800px;
+    6     background-color: var(--card-background-color);
+    7     border-radius: 24px;
+    8     box-shadow: 0 10px 50px rgba(0, 90, 156, 0.15);
+    9     overflow: hidden;
+   10     position: relative;
+   11     display: flex;
+   12     flex-direction: column;
+   13     /* 여기에 추가할 코드 */
+   14     background-image: url('bg_main.png');
+   15     background-size: cover;
+   16     background-position: center;
+   17     background-repeat: no-repeat;  
 }
 
 .screen {
@@ -280,4 +283,5 @@ label {
     color: var(--subtle-text-color);
     line-height: 1.5;
 }
+
 
