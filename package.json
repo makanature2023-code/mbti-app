@@ -1,0 +1,11 @@
+{
+  "name": "mbti-app",
+  "version": "1.0.0",
+  "description": "MBTI app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
