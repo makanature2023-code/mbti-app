@@ -1,88 +1,97 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T8: 나의 향기 찾기</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-</head>
-<body>
-    <div class="app-container">
-        <!-- Start Screen -->
-        <div id="start-screen" class="screen active">
-            <div class="content">
-                <h1>나의 성향과 어울리는<br>태안의 향기 찾기</h1>
-                <p>간단한 테스트를 통해 당신의 성향에 맞는<br>태안8경 시그니처 향을 추천해 드립니다.</p>
-                <div class="form-group">
-                    <label>성별</label>
-                    <div class="options">
-                        <button class="option" data-group="gender" data-value="male">남성</button>
-                        <button class="option" data-group="gender" data-value="female">여성</button>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>나이</label>
-                    <div class="options">
-                        <button class="option" data-group="age" data-value="10s">10대</button>
-                        <button class="option" data-group="age" data-value="20s">20대</button>
-                        <button class="option" data-group="age" data-value="30s">30대</button>
-                        <button class="option" data-group="age" data-value="40s">40대</button>
-                        <button class="option" data-group="age" data-value="50s">50대</button>
-                        <button class="option" data-group="age" data-value="60s+">60대 이상</button>
-                    </div>
-                </div>
-                <button id="start-btn" class="primary-btn" disabled>시작하기</button>
-            </div>
-        </div>
-
-        <!-- Quiz Screen -->
-        <div id="quiz-screen" class="screen">
-            <div class="content">
-                <div id="progress-bar">
-                    <div id="progress"></div>
-                </div>
-                <p id="question-text"></p>
-                <div id="answer-options" class="options-vertical"></div>
-            </div>
-        </div>
-
-        <!-- Result Screen -->
-        <div id="result-screen" class="screen">
-            <div class="content">
-                <div class="result-card">
-                    <img id="result-img" src="" alt="추천 향기 이미지">
-                    <div class="result-text">
-                        <p class="result-intro">당신의 성향에 어울리는 향기는</p>
-                        <h2 id="scent-name"></h2>
-                        <p class="mbti-type-display">MBTI: <span id="mbti-type"></span></p>
-                        <p id="scent-description"></p>
-                    </div>
-                </div>
-                <div class="result-buttons">
-                    <a id="purchase-link" href="#" target="_blank" class="primary-btn">구매하기</a>
-                    <button id="restart-btn" class="secondary-btn">다시하기</button>
-                </div>
-            </div>
-        </div>
-        <div class="app-footer">
-            <p>우리는 태안의 바다를 지키고, 미소짓는 돌고래 상괭이를 보호합니다.</p>
-        </div>
-    </div>
-    <script src="script.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').then(registration => {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }, err => {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-        });
-      }
-    </script>
-</body>
-</html>
+1 <!DOCTYPE html>
+    2 <html lang="ko">
+    3 <head>
+    4     <meta charset="UTF-8">
+    5     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    6     <title>T8: 나의 향기 찾기</title>
+    7     <base href="/mbti-app/">
+    8     <link rel="preconnect" href="https://fonts.googleapis.com">
+    9     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   10     <link href=
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&di
+      splay=swap" rel="stylesheet">
+   11     <link rel="stylesheet" href="style.css">
+   12     <link rel="manifest" href="manifest.json">
+   13 </head>
+   14 <body>
+   15     <div class="app-container">
+   16         <!-- Start Screen -->
+   17         <div id="start-screen" class="screen active">
+   18             <div class="content">
+   19                 <h1>나의 성향과 어울리는<br>태안의 향기 찾기</h1>
+   20                 <p>간단한 테스트를 통해 당신의 성향에 맞는<br>태안8경 시그니처 향을 추천해
+      드립니다.</p>
+   21                 <div class="form-group">
+   22                     <label>성별</label>
+   23                     <div class="options">
+   24                         <button class="option" data-group="gender" data-value="male">남성</
+      button>
+   25                         <button class="option" data-group="gender" data-value="female">여성</
+      button>
+   26                     </div>
+   27                 </div>
+   28                 <div class="form-group">
+   29                     <label>나이</label>
+   30                     <div class="options">
+   31                         <button class="option" data-group="age" data-value="10s">10대</button>
+   32                         <button class="option" data-group="age" data-value="20s">20대</button>
+   33                         <button class="option" data-group="age" data-value="30s">30대</button>
+   34                         <button class="option" data-group="age" data-value="40s">40대</button>
+   35                         <button class="option" data-group="age" data-value="50s">50대</button>
+   36                         <button class="option" data-group="age" data-value="60s+">60대 이상</
+      button>
+   37                     </div>
+   38                 </div>
+   39                 <button id="start-btn" class="primary-btn" disabled>시작하기</button>
+   40             </div>
+   41         </div>
+   42
+   43         <!-- Quiz Screen -->
+   44         <div id="quiz-screen" class="screen">
+   45             <div class="content">
+   46                 <div id="progress-bar">
+   47                     <div id="progress"></div>
+   48                 </div>
+   49                 <p id="question-text"></p>
+   50                 <div id="answer-options" class="options-vertical"></div>
+   51             </div>
+   52         </div>
+   53
+   54         <!-- Result Screen -->
+   55         <div id="result-screen" class="screen">
+   56             <div class="content">
+   57                 <div class="result-card">
+   58                     <img id="result-img" src="" alt="추천 향기 이미지">
+   59                     <div class="result-text">
+   60                         <p class="result-intro">당신의 성향에 어울리는 향기는</p>
+   61                         <h2 id="scent-name"></h2>
+   62                         <p class="mbti-type-display">MBTI: <span id="mbti-type"></span></p>
+   63                         <p class="scent-description"></p>
+   64                     </div>
+   65                 </div>
+   66                 <div class="result-buttons">
+   67                     <a id="purchase-link" href="#" target="_blank" class="primary-btn">구매하기
+      </a>
+   68                     <button id="restart-btn" class="secondary-btn">다시하기</button>
+   69                 </div>
+   70             </div>
+   71         </div>
+   72         <div class="app-footer">
+   73             <p>우리는 태안의 바다를 지키고, 미소짓는 돌고래 상괭이를 보호합니다.</p>
+   74         </div>
+   75     </div>
+   76     <script src="script.js"></script>
+   77     <script>
+   78       if ('serviceWorker' in navigator) {
+   79         window.addEventListener('load', () => {
+   80           navigator.serviceWorker.register('./sw.js').then(registration => {
+   81             console.log('ServiceWorker registration successful with scope: ',
+      registration.scope);
+   82           }, err => {
+   83             console.log('ServiceWorker registration failed: ', err);
+   84           });
+   85         });
+   86       }
+   87     </script>
+   88 </body>
+   89 </html>
