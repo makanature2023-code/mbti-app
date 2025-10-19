@@ -38,7 +38,7 @@ body {
    12     flex-direction: column;
    13     /* 여기에 추가할 코드 */
    14     background-image: url('bg_main.png');
-   15     background-size: cover;
+   15     background-size: contain;
    16     background-position: center;
    17     background-repeat: no-repeat;  
 }
@@ -283,5 +283,6 @@ label {
     color: var(--subtle-text-color);
     line-height: 1.5;
 }
+
 
 
