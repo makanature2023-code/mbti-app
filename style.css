@@ -1,288 +1,287 @@
-:root {
-    --primary-color: #005a9c; /* Deep Sea Blue */
-    --primary-hover-color: #00487d;
-    --secondary-color: #e8f4f8; /* Light Sky Blue */
-    --accent-color: #f7c548; /* Sandy Yellow */
-    --background-color: #f0f7fa; /* Very Light Blue/Gray */
-    --card-background-color: #ffffff;
-    --text-color: #2c3e50; /* Dark Slate Blue */
-    --subtle-text-color: #576c7f; /* Grayish Blue */
-    --border-color: #dceaf2;
-    --font-family-main: 'Inter', 'Noto Sans KR', sans-serif;
-}
-
-body {
-    font-family: var(--font-family-main);
-     background-color: var(--background-color);
-     /* background-image 관련 코드는 모두 제거합니다. */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
- -webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-}
-
-.app-container {
-  width: 100%;
-    3     max-width: 420px;
-    4     height: 90vh;
-    5     max-height: 800px;
-    6     background-color: var(--card-background-color);
-    7     border-radius: 24px;
-    8     box-shadow: 0 10px 50px rgba(0, 90, 156, 0.15);
-    9     overflow: hidden;
-   10     position: relative;
-   11     display: flex;
-   12     flex-direction: column;
-   13     /* 여기에 추가할 코드 */
-   14     background-image: url('bg_main.png');
-   15     background-size: contain;
-   16     background-position: center;
-   17     background-repeat: no-repeat;  
-}
-
-.screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 35px;
-    box-sizing: border-box;
-    opacity: 0;
-    transform: scale(0.98);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-    visibility: hidden;
-}
-
-.screen.active {
-    opacity: 1;
-    transform: scale(1);
-    visibility: visible;
-}
-
-.content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
-h1 {
-    color: var(--text-color);
-    font-weight: 700;
-    font-size: 1.8em;
-    line-height: 1.4;
-    margin-bottom: 10px;
-}
-
-p {
-    color: var(--subtle-text-color);
-    font-size: 1em;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 12px;
-    font-weight: 700;
-    color: var(--text-color);
-    font-size: 1em;
-}
-
-.options {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-.option {
-    flex-grow: 1;
-    background-color: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 12px 10px;
-    cursor: pointer;
-    font-size: 0.95em;
-    font-weight: 700;
-    color: var(--subtle-text-color);
-    transition: all 0.2s ease;
-}
-
-.option:hover {
-    transform: translateY(-2px);
-    border-color: var(--primary-color);
-}
-
-.option.selected {
-    background-color: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-.primary-btn, .secondary-btn {
-    border: none;
-    border-radius: 12px;
-    padding: 16px 20px;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: 700;
-    width: 100%;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-}
-
-.primary-btn {
-    background: var(--primary-color);
-    color: white;
-}
-
-.primary-btn:hover {
-    background-color: var(--primary-hover-color);
-    transform: scale(1.03);
-}
-
-.primary-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.secondary-btn {
-    background-color: var(--secondary-color);
-    color: var(--subtle-text-color);
-}
-
-.secondary-btn:hover {
-    background-color: #dceaf2;
-}
-
-#progress-bar {
-    width: 100%;
-    height: 8px;
-    background-color: #e9ecef;
-    border-radius: 4px;
-    margin-bottom: 30px;
-    overflow: hidden;
-}
-
-#progress {
-    width: 0%;
-    height: 100%;
-    background-color: var(--primary-color);
-    border-radius: 4px;
-    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-#question-text {
-    font-size: 1.4em;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 40px;
-    line-height: 1.5;
-}
-
-.options-vertical {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.quiz-option {
-    width: 100%;
-    padding: 18px;
-    text-align: center;
-    font-size: 1.05em;
-}
-
-/* Result Screen Styles */
-#result-screen .content {
-    justify-content: space-between;
-}
-
-.result-card {
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 15px;
-    background-color: #fff;
-}
-
-#result-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 20px;
-}
-
-.result-intro {
-    font-size: 1em;
-    margin-bottom: 5px !important;
-}
-
-#scent-name {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 0 0 5px 0;
-}
-
-.mbti-type-display {
-    font-size: 0.9em;
-    color: var(--subtle-text-color);
-    background-color: var(--secondary-color);
-    padding: 3px 8px;
-    border-radius: 6px;
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-#scent-description {
-    font-size: 1em;
-    line-height: 1.6;
-    color: var(--text-color);
-    text-align: left;
-}
-
-.result-buttons {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-}
-
-.app-footer {
-    text-align: center;
-    padding: 15px;
-    background-color: var(--secondary-color);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.app-footer p {
-    margin: 0;
-    font-size: 0.8em;
-    color: var(--subtle-text-color);
-    line-height: 1.5;
-}
-
+ :root {
+     2     --primary-color: #005a9c; /* Deep Sea Blue */
+     3     --primary-hover-color: #00487d;
+     4     --secondary-color: #e8f4f8; /* Light Sky Blue */
+     5     --accent-color: #f7c548; /* Sandy Yellow */
+     6     --background-color: #f0f7fa; /* Very Light Blue/Gray */
+     7     --card-background-color: #ffffff;
+     8     --text-color: #2c3e50; /* Dark Slate Blue */
+     9     --subtle-text-color: #576c7f; /* Grayish Blue */
+    10     --border-color: #dceaf2;
+    11     --font-family-main: 'Inter', 'Noto Sans KR', sans-serif;
+    12 }
+    13
+    14 body {
+    15     font-family: var(--font-family-main);
+    16     background-color: var(--background-color);
+    17     /* background-image 관련 코드는 모두 제거합니다. */
+    18     display: flex;
+    19     justify-content: center;
+    20     align-items: center;
+    21     height: 100vh;
+    22     margin: 0;
+    23     -webkit-font-smoothing: antialiased;
+    24     -moz-osx-font-smoothing: grayscale;
+    25 }
+    26
+    27 .app-container {
+    28     width: 100%;
+    29     max-width: 420px;
+    30     height: 90vh;
+    31     max-height: 800px;
+    32     background-color: var(--card-background-color);
+    33     border-radius: 24px;
+    34     box-shadow: 0 10px 50px rgba(0, 90, 156, 0.15);
+    35     overflow: hidden;
+    36     position: relative;
+    37     display: flex;
+    38     flex-direction: column;
+    39     /* 여기에 추가할 코드 */
+    40     background-image: url('bg_main.png');
+    41     background-size: contain;
+    42     background-position: center;
+    43     background-repeat: no-repeat;
+    44 }
+    45
+    46 .screen {
+    47     position: absolute;
+    48     top: 0;
+    49     left: 0;
+    50     width: 100%;
+    51     height: 100%;
+    52     display: flex;
+    53     flex-direction: column;
+    54     justify-content: center;
+    55     align-items: center;
+    56     padding: 30px 35px;
+    57     box-sizing: border-box;
+    58     opacity: 0;
+    59     transform: scale(0.98);
+    60     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    61     visibility: hidden;
+    62 }
+    63
+    64 .screen.active {
+    65     opacity: 1;
+    66     transform: scale(1);
+    67     visibility: visible;
+    68 }
+    69
+    70 .content {
+    71     width: 100%;
+    72     height: 100%;
+    73     display: flex;
+    74     flex-direction: column;
+    75     justify-content: center;
+    76     text-align: center;
+    77 }
+    78
+    79 h1 {
+    80     color: var(--text-color);
+    81     font-weight: 700;
+    82     font-size: 1.8em;
+    83     line-height: 1.4;
+    84     margin-bottom: 10px;
+    85 }
+    86
+    87 p {
+    88     color: var(--subtle-text-color);
+    89     font-size: 1em;
+    90     line-height: 1.6;
+    91     margin-bottom: 30px;
+    92 }
+    93
+    94 .form-group {
+    95     margin-bottom: 20px;
+    96     text-align: left;
+    97 }
+    98
+    99 label {
+   100     display: block;
+   101     margin-bottom: 12px;
+   102     font-weight: 700;
+   103     color: var(--text-color);
+   104     font-size: 1em;
+   105 }
+   106
+   107 .options {
+   108     display: flex;
+   109     justify-content: space-between;
+   110     gap: 8px;
+   111 }
+   112
+   113 .option {
+   114     flex-grow: 1;
+   115     background-color: #fff;
+   116     border: 1px solid var(--border-color);
+   117     border-radius: 12px;
+   118     padding: 12px 10px;
+   119     cursor: pointer;
+   120     font-size: 0.95em;
+   121     font-weight: 700;
+   122     color: var(--subtle-text-color);
+   123     transition: all 0.2s ease;
+   124 }
+   125
+   126 .option:hover {
+   127     transform: translateY(-2px);
+   128     border-color: var(--primary-color);
+   129 }
+   130
+   131 .option.selected {
+   132     background-color: var(--primary-color);
+   133     color: white;
+   134     border-color: var(--primary-color);
+   135 }
+   136
+   137 .primary-btn, .secondary-btn {
+   138     border: none;
+   139     border-radius: 12px;
+   140     padding: 16px 20px;
+   141     cursor: pointer;
+   142     font-size: 1.1em;
+   143     font-weight: 700;
+   144     width: 100%;
+   145     transition: all 0.2s ease;
+   146     text-decoration: none;
+   147     display: inline-block;
+   148     text-align: center;
+   149 }
+   150
+   151 .primary-btn {
+   152     background: var(--primary-color);
+   153     color: white;
+   154 }
+   155
+   156 .primary-btn:hover {
+   157     background-color: var(--primary-hover-color);
+   158     transform: scale(1.03);
+   159 }
+   160
+   161 .primary-btn:disabled {
+   162     background-color: #ccc;
+   163     cursor: not-allowed;
+   164     transform: none;
+   165 }
+   166
+   167 .secondary-btn {
+   168     background-color: var(--secondary-color);
+   169     color: var(--subtle-text-color);
+   170 }
+   171
+   172 .secondary-btn:hover {
+   173     background-color: #dceaf2;
+   174 }
+   175
+   176 #progress-bar {
+   177     width: 100%;
+   178     height: 8px;
+   179     background-color: #e9ecef;
+   180     border-radius: 4px;
+   181     margin-bottom: 30px;
+   182     overflow: hidden;
+   183 }
+   184
+   185 #progress {
+   186     width: 0%;
+   187     height: 100%;
+   188     background-color: var(--primary-color);
+   189     border-radius: 4px;
+   190     transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+   191 }
+   192
+   193 #question-text {
+   194     font-size: 1.4em;
+   195     font-weight: 700;
+   196     color: var(--text-color);
+   197     margin-bottom: 40px;
+   198     line-height: 1.5;
+   199 }
+   200
+   201 .options-vertical {
+   202     display: flex;
+   203     flex-direction: column;
+   204     gap: 15px;
+   205 }
+   206
+   207 .quiz-option {
+   208     width: 100%;
+   209     padding: 18px;
+   210     text-align: center;
+   211     font-size: 1.05em;
+   212 }
+   213
+   214 /* Result Screen Styles */
+   215 #result-screen .content {
+   216     justify-content: space-between;
+   217 }
+   218
+   219 .result-card {
+   220     border: 1px solid var(--border-color);
+   221     border-radius: 16px;
+   222     padding: 20px;
+   223     margin-bottom: 15px;
+   224     background-color: #fff;
+   225 }
+   226
+   227 #result-img {
+   228     width: 100%;
+   229     height: 180px;
+   230     object-fit: cover;
+   231     border-radius: 12px;
+   232     margin-bottom: 20px;
+   233 }
+   234
+   235 .result-intro {
+   236     font-size: 1em;
+   237     margin-bottom: 5px !important;
+   238 }
+   239
+   240 #scent-name {
+   241     font-size: 1.8em;
+   242     font-weight: 700;
+   243     color: var(--primary-color);
+   244     margin: 0 0 5px 0;
+   245 }
+   246
+   247 .mbti-type-display {
+   248     font-size: 0.9em;
+   249     color: var(--subtle-text-color);
+   250     background-color: var(--secondary-color);
+   251     padding: 3px 8px;
+   252     border-radius: 6px;
+   253     display: inline-block;
+   254     margin-bottom: 15px;
+   255 }
+   256
+   257 #scent-description {
+   258     font-size: 1em;
+   259     line-height: 1.6;
+   260     color: var(--text-color);
+   261     text-align: left;
+   262 }
+   263
+   264 .result-buttons {
+   265     display: flex;
+   266     gap: 10px;
+   267     width: 100%;
+   268 }
+   269
+   270 .app-footer {
+   271     text-align: center;
+   272     padding: 15px;
+   273     background-color: var(--secondary-color);
+   274     position: absolute;
+   275     bottom: 0;
+   276     width: 100%;
+   277     box-sizing: border-box;
+   278 }
+   279
+   280 .app-footer p {
+   281     margin: 0;
+   282     font-size: 0.8em;
+   283     color: var(--subtle-text-color);
+   284     line-height: 1.5;
+   285 }
 
 
