@@ -116,8 +116,16 @@ button:disabled {
 
 .options {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+}
+
+.age-options {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gender-options {
+    grid-template-columns: repeat(2, minmax(80px, 120px));
+    justify-content: center;
 }
 
 .option {
