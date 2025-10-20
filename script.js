@@ -259,6 +259,39 @@ document.addEventListener('DOMContentLoaded', () => {
         scentDescription.textContent = scentData.desc;
         resultImg.src = `t8/사진/${scentData.img}`;
         purchaseLink.href = 'https://smartstore.naver.com/makanature/category/1c62f089aed3466692e2b3357212df06?cp=1';
+
+        // Calculate and display scores
+        const dichotomies = ['E', 'I', 'S', 'N', 'T', 'F', 'J', 'P'];
+        dichotomies.forEach(dichotomy => {
+            const scoreBar = document.getElementById(`score-${dichotomy.toLowerCase()}`);
+            const scoreValue = document.getElementById(`score-${dichotomy.toLowerCase()}-value`);
+            
+            let total;
+            let score;
+            
+            if (['E', 'I'].includes(dichotomy)) {
+                total = scores.E + scores.I;
+                score = scores[dichotomy];
+            } else if (['S', 'N'].includes(dichotomy)) {
+                total = scores.S + scores.N;
+                score = scores[dichotomy];
+            } else if (['T', 'F'].includes(dichotomy)) {
+                total = scores.T + scores.F;
+                score = scores[dichotomy];
+            } else if (['J', 'P'].includes(dichotomy)) {
+                total = scores.J + scores.P;
+                score = scores[dichotomy];
+            }
+            
+            const percentage = total > 0 ? (score / total) * 100 : 0;
+            
+            if (scoreBar) {
+                scoreBar.style.width = `${percentage}%`;
+            }
+            if (scoreValue) {
+                scoreValue.textContent = `${Math.round(percentage)}%`;
+            }
+        });
     }
 
     function resetQuiz() {
