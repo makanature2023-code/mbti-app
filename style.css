@@ -220,6 +220,7 @@ button:disabled {
     max-width: 250px;
     border-radius: 15px;
     margin-bottom: 20px;
+    object-fit: contain;
 }
 
 #scent-name {
@@ -249,6 +250,8 @@ button:disabled {
   color: #333;
   text-shadow: none;
   backdrop-filter: blur(6px);
+  overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 #result-screen .content h2,
