@@ -252,6 +252,7 @@ button:disabled {
   backdrop-filter: blur(6px);
   overflow-y: auto;
   padding-bottom: 20px;
+  flex-grow: 1;
 }
 
 #result-screen .content h2,
