@@ -1,61 +1,80 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MAKA NATURE | 나의 향기 찾기</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
+  <div class="app-container">
+    <div id="start-screen" class="screen active">
+      <div class="content">
+        <img src="로고2-배경제거.png" alt="MAKA NATURE" class="logo">
+        <h1>나의 성향과 어울리는<br>태안의 향기 찾기</h1>
+        <p>간단한 테스트를 통해 당신의 성향에 맞는<br>태안8경 시그니처 향을 추천해드립니다.</p>
 
-  <!-- Start Screen -->
-  <div id="start-screen" class="screen active">
-    <div class="overlay"></div>
-    <div class="content">
-      <img src="로고2-배경제거.png" alt="MAKA NATURE" class="logo">
-      <h1>나의 성향과 어울리는<br>태안의 향기 찾기</h1>
-      
-      <div class="options-container">
-        <div class="option-group">
-          <div class="option" data-group="gender" data-value="male">남성</div>
-          <div class="option" data-group="gender" data-value="female">여성</div>
+        <div class="form-group">
+          <label>성별</label>
+          <div class="options">
+            <button class="option" data-group="gender" data-value="male">남성</button>
+            <button class="option" data-group="gender" data-value="female">여성</button>
+          </div>
         </div>
-        <div class="option-group">
-          <div class="option" data-group="age" data-value="10s">10대</div>
-          <div class="option" data-group="age" data-value="20s">20대</div>
-          <div class="option" data-group="age" data-value="30s">30대</div>
-          <div class="option" data-group="age" data-value="40s">40대</div>
-          <div class="option" data-group="age" data-value="50s">50대</div>
-          <div class="option" data-group="age" data-value="60s+">60대 이상</div>
+
+        <div class="form-group">
+          <label>나이</label>
+          <div class="options">
+            <button class="option" data-group="age" data-value="10s">10대</button>
+            <button class="option" data-group="age" data-value="20s">20대</button>
+            <button class="option" data-group="age" data-value="30s">30대</button>
+            <button class="option" data-group="age" data-value="40s">40대</button>
+            <button class="option" data-group="age" data-value="50s">50대</button>
+            <button class="option" data-group="age" data-value="60s+">60대 이상</button>
+          </div>
         </div>
-      </div>
 
-      <button id="start-btn" disabled>시작하기</button>
-    </div>
-  </div>
-
-  <!-- Quiz Screen -->
-  <div id="quiz-screen" class="screen">
-    <div class="quiz-header">
-      <div class="progress-bar">
-        <div id="progress"></div>
+        <button id="start-btn" class="primary-btn" disabled>시작하기</button>
       </div>
     </div>
-    <div id="question-text"></div>
-    <div id="answer-options"></div>
-  </div>
 
-  <!-- Result Screen -->
-  <div id="result-screen" class="screen">
-    <div class="content">
-      <h2>당신을 위한 향기</h2>
-      <img id="result-img" src="" alt="Scent image">
-      <h3 id="scent-name"></h3>
-      <p id="mbti-type"></p>
-      <p id="scent-description"></p>
-      <a id="purchase-link" href="#" target="_blank"><button>향기 구매하기</button></a>
-      <button id="restart-btn">테스트 다시하기</button>
+    <div id="quiz-screen" class="screen">
+      <div class="content">
+        <div id="progress-bar"><div id="progress"></div></div>
+        <p id="question-text"></p>
+        <div id="answer-options" class="options-vertical"></div>
+      </div>
+    </div>
+
+    <div id="result-screen" class="screen">
+      <div class="content">
+        <div class="result-card">
+          <img id="result-img" src="" alt="추천 향기 이미지" />
+          <div class="result-text">
+            <p class="result-intro">당신의 성향에 어울리는 향기는</p>
+            <h2 id="scent-name"></h2>
+            <p class="mbti-type-display">MBTI: <span id="mbti-type"></span></p>
+            <p id="scent-description"></p>
+          </div>
+        </div>
+
+        <div class="result-buttons">
+          <a id="purchase-link" href="#" target="_blank" class="primary-btn">구매하기</a>
+          <button id="restart-btn" class="secondary-btn">다시하기</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-footer">
+      <p>🌊 우리는 태안의 바다와 상괭이를 사랑합니다.</p>
     </div>
   </div>
 
