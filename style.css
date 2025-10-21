@@ -8,12 +8,19 @@ html {
 body {
   margin: 0;
   font-family: 'Pretendard', sans-serif;
-  background-color: transparent; /* Dark gray background */
+  background-color: #FFFFFF; /* Set a solid background */
+  height: 100vh; /* Ensure body takes full viewport height */
+}
+
+.app-container {
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  max-width: 500px; /* Max-width for tablet/desktop */
+  margin: 0 auto; /* Center horizontally */
+  position: relative;
+  background: url('bg_main.png') no-repeat center center / cover;
+  overflow: hidden; /* Ensures content fits */
+  border-radius: 20px; /* Match the screenshot */
 }
 
 .overlay {
@@ -30,14 +37,20 @@ body {
   position: relative;
   z-index: 2;
   text-align: center;
-  width: 90%;
+  width: 100%; /* Fill the container, padding will handle spacing */
+  box-sizing: border-box;
   max-width: 500px;
-  background: url('bg_main.png') no-repeat center center / cover;
-  border-radius: 20px;
-  padding: 20px 20px;
+  background: transparent;
+  padding: 40px 20px 20px 20px; /* Increased top padding */
   color: white; /* Changed to white for readability */
   text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Added for readability */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  
+  /* Flex properties to align content to top-center */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center; /* Center items horizontally */
+  flex-grow: 1; /* Take up available vertical space */
 }
 
 .logo {
