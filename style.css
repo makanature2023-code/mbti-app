@@ -69,7 +69,7 @@ h1, h2 {
 
 h1 {
   font-size: 1.4em;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* 20px에서 10px로 줄임 */
 }
 
 h2 {
@@ -78,8 +78,7 @@ h2 {
 
 button {
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
+  margin: 5px 0; /* 10px에서 5px로 줄임 */
   border-radius: 10px;
   border: none;
   font-size: 1em;
@@ -119,7 +118,7 @@ button:disabled {
 
 /* Start Screen Specifics */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* 20px에서 10px로 줄임 */
     text-align: left;
 }
 
@@ -267,7 +266,7 @@ button:disabled {
   color: #333;
   text-shadow: none;
   backdrop-filter: blur(6px);
-  overflow-y: hidden; /* 스크롤바 제거 */
+  overflow-y: auto; /* 스크롤바 다시 허용 */
   padding-bottom: 20px;
   flex-grow: 1;
 }
@@ -280,7 +279,7 @@ button:disabled {
   box-sizing: border-box;
   max-width: 500px;
   background: transparent;
-  padding: 40px 20px 20px 20px; /* Increased top padding */
+  padding: 20px 20px 20px 20px; /* 상단 패딩 40px에서 20px로 줄임 */
   color: white; /* Changed to white for readability */
   text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Added for readability */
   
