@@ -267,9 +267,30 @@ button:disabled {
   color: #333;
   text-shadow: none;
   backdrop-filter: blur(6px);
-  overflow-y: auto;
+  overflow-y: hidden; /* 스크롤바 제거 */
   padding-bottom: 20px;
   flex-grow: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%; /* Fill the container, padding will handle spacing */
+  box-sizing: border-box;
+  max-width: 500px;
+  background: transparent;
+  padding: 40px 20px 20px 20px; /* Increased top padding */
+  color: white; /* Changed to white for readability */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Added for readability */
+  
+  /* Flex properties to align content to top-center */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center; /* Center items horizontally */
+  flex-grow: 1; /* Take up available vertical space */
+  overflow-y: auto; /* 메인 화면 스크롤 가능 */
 }
 
 #result-screen .content h2,
@@ -338,7 +359,7 @@ button:disabled {
 }
 
 .mbti-visual-container img {
-    height: 120px;
+    height: 80px;
     width: auto;
 }
 
@@ -357,8 +378,4 @@ button:disabled {
 
 *:focus {
     outline: none;
-}
-
-html, body {
-    overflow: hidden;
 }
