@@ -21,7 +21,7 @@ body {
   width: min(100%, 500px); /* Max-width for tablet/desktop */
   margin: 0 auto; /* Center horizontally */
   position: relative;
-  background: url('bg_main.jpg') no-repeat center center / cover;
+  background: url('bg.jpg') no-repeat center center / cover;
   overflow: hidden; /* Ensures content fits */
   border-radius: 20px; /* Match the screenshot */
   box-sizing: border-box; /* Ensure consistent box model */
