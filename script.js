@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const scentName = document.getElementById('scent-name');
     const mbtiTypeDisplay = document.getElementById('mbti-type');
     const scentDescription = document.getElementById('scent-description');
+    const resultOilFront = document.getElementById('result-oil-front');
+    const resultOilBack = document.getElementById('result-oil-back');
 
     let userGender = null;
     let userAge = null;
@@ -258,6 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
         scentName.textContent = finalScentName;
         scentDescription.textContent = scentData.desc;
         resultImg.src = `t8/사진/${scentData.img}`;
+
+        // Set dynamic oil images
+        const baseName = scentData.img.split('.')[0]; // e.g., 'scent1' from 'scent1.jpg'
+        resultOilFront.src = `aroma/${baseName}_front.png`;
+        resultOilBack.src = `aroma/${baseName}_back.png`;
+
         purchaseLink.href = 'https://smartstore.naver.com/makanature/category/1c62f089aed3466692e2b3357212df06?cp=1';
 
         // Calculate and display scores

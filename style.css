@@ -329,6 +329,32 @@ button:disabled {
     font-weight: 600;
 }
 
+/* Result Screen Oil Image Styles */
+.mbti-visual-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.mbti-visual-container img {
+    height: 120px;
+    width: auto;
+}
+
+#result-oil-front {
+    margin-right: 15px;
+}
+
+#result-oil-back {
+    margin-left: 15px;
+}
+
+#result-screen .mbti-type-display {
+    margin: 0;
+    font-size: 1.2em; /* Adjust as needed */
+}
+
 *:focus {
     outline: none;
 }
