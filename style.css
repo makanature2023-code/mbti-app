@@ -25,6 +25,8 @@ body {
   overflow: hidden; /* Ensures content fits */
   border-radius: 20px; /* Match the screenshot */
   box-sizing: border-box; /* Ensure consistent box model */
+  display: flex;
+  flex-direction: column;
 }
 
 .overlay {
