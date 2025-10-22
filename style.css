@@ -14,20 +14,32 @@ html {
 body {
   margin: 0;
   font-family: 'Pretendard', sans-serif;
-  background-color: transparent !important; /* Ensure no default background interferes */
-  height: 100vh; /* Ensure body takes full viewport height */
+  background-color: #f0f2f5; /* A neutral background for the page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .app-container {
-  width: min(100%, 500px); /* Max-width for tablet/desktop */
-  margin: 0 auto; /* Center horizontally */
+  width: 100%;
+  max-width: 500px;
+  height: 100vh; /* Full height on mobile */
+  max-height: 850px; /* Max-height for large screens */
+  margin: 0 auto;
   position: relative;
   background: url('bg.jpg') no-repeat center center / cover;
-  overflow: hidden; /* Ensures content fits */
-  border-radius: 20px; /* Match the screenshot */
-  box-sizing: border-box; /* Ensure consistent box model */
-  height: 100vh; /* Ensure app-container takes full viewport height */
-  filter: none !important;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15); /* Add depth */
+  display: flex; /* Use flexbox to manage content height */
+  flex-direction: column;
+}
+
+@media (min-width: 520px) {
+  .app-container {
+    height: 90vh;
+  }
 }
 
 .overlay {
@@ -38,27 +50,6 @@ body {
   height: 100%;
   background: rgba(0,0,0,0.35);
   z-index: -1; /* Put it behind the content */
-}
-
-.content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  width: 100%; /* Fill the container, padding will handle spacing */
-  box-sizing: border-box;
-  max-width: 500px;
-  background: transparent;
-  padding: 40px 20px 20px 20px; /* Increased top padding */
-  color: white; /* Changed to white for readability */
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Added for readability */
-  
-  /* Flex properties to align content to top-center */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Align content to the top */
-  align-items: center; /* Center items horizontally */
-  flex-grow: 1; /* Take up available vertical space */
-  overflow-y: auto; /* 메인 화면 스크롤 가능 */
 }
 
 .logo {
@@ -84,28 +75,7 @@ h2 {
     margin-top: 0;
 }
 
-button {
-  width: 100%;
-  margin: 5px 0; /* 10px에서 5px로 줄임 */
-  border-radius: 10px;
-  border: none;
-  font-size: 1em;
-  background: #2E8B57; /* SeaGreen */
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
 
 /* New styles for SPA structure */
 .screen {
@@ -128,14 +98,17 @@ button:disabled {
 .form-group {
     margin-bottom: 10px; /* 20px에서 10px로 줄임 */
     text-align: left;
+    border: none;
+    padding: 0;
 }
 
-.form-group label {
+.form-label {
     display: block;
     margin-bottom: 12px;
     font-weight: 600;
     color: #fff;
     font-size: 1em;
+    text-align: center;
 }
 
 .options {
@@ -150,6 +123,10 @@ button:disabled {
 .gender-options {
     grid-template-columns: repeat(2, minmax(80px, 120px));
     justify-content: center;
+}
+
+.option-input {
+    display: none;
 }
 
 .option {
@@ -171,7 +148,7 @@ button:disabled {
     border-color: #aaa;
 }
 
-.option.selected {
+.option-input:checked + .option {
     background-color: #0095ff;
     color: white;
     border-color: #0095ff;
@@ -250,7 +227,7 @@ button:disabled {
 #scent-name {
     font-size: 1.5em;
     font-weight: 600;
-    margin: 10px 0;
+    margin: 10px 0 25px;
 }
 
 #mbti-type {
@@ -264,15 +241,13 @@ button:disabled {
     line-height: 1.4;
 }
 
-#restart-btn {
-    background: #555;
-}
+
 
 /* Result Screen Content Override */
 #result-screen .content {
   background: rgba(0, 0, 0, 0.5);
   color: white;
-  text-shadow: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
   overflow-y: auto; /* 스크롤바 다시 허용 */
   padding-bottom: 10px;
   flex-grow: 1;
@@ -301,11 +276,11 @@ button:disabled {
 
 #result-screen .content h2,
 #result-screen .content #scent-name {
-    color: #1a1a1a;
+    color: white;
 }
 
 #result-screen .content #mbti-type {
-    color: #555;
+    color: white;
 }
 
 /* Result Screen Score Display */
@@ -317,7 +292,7 @@ button:disabled {
 .scores-container h4 {
     font-size: 1.1em;
     font-weight: 600;
-    color: #333;
+    color: white;
     margin-bottom: 5px;
     text-align: left;
 }
@@ -384,4 +359,51 @@ button:disabled {
 
 *:focus {
     outline: none;
+}
+
+/* Unified Button Styles */
+.btn {
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Pretendard', sans-serif; /* Ensure consistent font */
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.5; /* Ensure consistent vertical alignment */
+    text-align: center;
+    text-decoration: none; /* For <a> tags */
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #4CAF50; /* Unified green color */
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn:disabled,
+.btn.disabled { /* also add a class for <a> tags */
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Force font-family for all btn elements */
+button.btn,
+a.btn {
+    font-family: 'Pretendard', sans-serif;
+}
+
+/* Layout for result buttons */
+.result-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
 }

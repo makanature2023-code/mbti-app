@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('script.js loaded and DOMContentLoaded fired!');
     // Screen elements
     const startScreen = document.getElementById('start-screen');
     const quizScreen = document.getElementById('quiz-screen');
@@ -11,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const purchaseLink = document.getElementById('purchase-link');
 
     // Form selections
-    const genderOptions = document.querySelectorAll('.option[data-group="gender"]');
-    const ageOptions = document.querySelectorAll('.option[data-group="age"]');
+    const genderRadios = document.querySelectorAll('input[name="gender"]');
+    const ageRadios = document.querySelectorAll('input[name="age"]');
 
     // Quiz elements
     const progressBar = document.getElementById('progress');
@@ -148,20 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    genderOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            genderOptions.forEach(o => o.classList.remove('selected'));
-            option.classList.add('selected');
-            userGender = option.dataset.value;
+    genderRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            userGender = document.querySelector('input[name="gender"]:checked').value;
             checkSelections();
         });
     });
 
-    ageOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            ageOptions.forEach(o => o.classList.remove('selected'));
-            option.classList.add('selected');
-            userAge = option.dataset.value;
+    ageRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            userAge = document.querySelector('input[name="age"]:checked').value;
             checkSelections();
         });
     });
@@ -270,27 +265,21 @@ document.addEventListener('DOMContentLoaded', () => {
         purchaseLink.href = 'https://smartstore.naver.com/makanature/category/1c62f089aed3466692e2b3357212df06?cp=1';
 
         // Calculate and display scores
+        const dichotomyPairs = {
+            E: ['E', 'I'], I: ['E', 'I'],
+            S: ['S', 'N'], N: ['S', 'N'],
+            T: ['T', 'F'], F: ['T', 'F'],
+            J: ['J', 'P'], P: ['J', 'P']
+        };
+
         const dichotomies = ['E', 'I', 'S', 'N', 'T', 'F', 'J', 'P'];
         dichotomies.forEach(dichotomy => {
             const scoreBar = document.getElementById(`score-${dichotomy.toLowerCase()}`);
             const scoreValue = document.getElementById(`score-${dichotomy.toLowerCase()}-value`);
             
-            let total;
-            let score;
-            
-            if (['E', 'I'].includes(dichotomy)) {
-                total = scores.E + scores.I;
-                score = scores[dichotomy];
-            } else if (['S', 'N'].includes(dichotomy)) {
-                total = scores.S + scores.N;
-                score = scores[dichotomy];
-            } else if (['T', 'F'].includes(dichotomy)) {
-                total = scores.T + scores.F;
-                score = scores[dichotomy];
-            } else if (['J', 'P'].includes(dichotomy)) {
-                total = scores.J + scores.P;
-                score = scores[dichotomy];
-            }
+            const pair = dichotomyPairs[dichotomy];
+            const total = scores[pair[0]] + scores[pair[1]];
+            const score = scores[dichotomy];
             
             const percentage = total > 0 ? (score / total) * 100 : 0;
             
@@ -311,6 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
         activeQuestionSet = [];
         startBtn.disabled = true;
         progressBar.style.width = '0%';
-        document.querySelectorAll('.option.selected').forEach(o => o.classList.remove('selected'));
+        const checkedRadios = document.querySelectorAll('input[type="radio"]:checked');
+        checkedRadios.forEach(radio => {
+            radio.checked = false;
+        });
     }
 });

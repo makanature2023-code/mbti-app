@@ -10,7 +10,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="style.css?v=1700000000" />
+  <link rel="stylesheet" href="style.css?v=1700000002" />
 
   <link rel="manifest" href="manifest.json">
 </head>
@@ -23,26 +23,35 @@
         <h1>나의 성향과 어울리는<br>태안의 향기 찾기</h1>
         <p>간단한 테스트를 통해 당신의 성향에 맞는<br>태안8경 시그니처 향을 추천해드립니다.</p>
 
-        <div class="form-group">
+        <fieldset class="form-group">
+          <legend class="form-label">성별</legend>
           <div class="options gender-options">
-            <button class="option" data-group="gender" data-value="male">남성</button>
-            <button class="option" data-group="gender" data-value="female">여성</button>
+            <input type="radio" id="gender-male" name="gender" value="male" class="option-input" />
+            <label for="gender-male" class="option">남성</label>
+            <input type="radio" id="gender-female" name="gender" value="female" class="option-input" />
+            <label for="gender-female" class="option">여성</label>
           </div>
-        </div>
+        </fieldset>
 
-        <div class="form-group">
-          <label>나이</label>
+        <fieldset class="form-group">
+          <legend class="form-label">나이</legend>
           <div class="options age-options">
-            <button class="option" data-group="age" data-value="10s">10대</button>
-            <button class="option" data-group="age" data-value="20s">20대</button>
-            <button class="option" data-group="age" data-value="30s">30대</button>
-            <button class="option" data-group="age" data-value="40s">40대</button>
-            <button class="option" data-group="age" data-value="50s">50대</button>
-            <button class="option" data-group="age" data-value="60s+">60대 이상</button>
+            <input type="radio" id="age-10s" name="age" value="10s" class="option-input" />
+            <label for="age-10s" class="option">10대</label>
+            <input type="radio" id="age-20s" name="age" value="20s" class="option-input" />
+            <label for="age-20s" class="option">20대</label>
+            <input type="radio" id="age-30s" name="age" value="30s" class="option-input" />
+            <label for="age-30s" class="option">30대</label>
+            <input type="radio" id="age-40s" name="age" value="40s" class="option-input" />
+            <label for="age-40s" class="option">40대</label>
+            <input type="radio" id="age-50s" name="age" value="50s" class="option-input" />
+            <label for="age-50s" class="option">50대</label>
+            <input type="radio" id="age-60s" name="age" value="60s+" class="option-input" />
+            <label for="age-60s" class="option">60대 이상</label>
           </div>
-        </div>
+        </fieldset>
 
-        <button id="start-btn" class="primary-btn" disabled>시작하기</button>
+        <button id="start-btn" class="btn" disabled>시작하기</button>
       </div>
     </div>
 
@@ -130,8 +139,8 @@
         </div>
 
         <div class="result-buttons">
-          <a id="purchase-link" href="#" target="_blank" class="primary-btn">구매하기</a>
-          <button id="restart-btn" class="secondary-btn">다시하기</button>
+          <a id="purchase-link" href="#" target="_blank" class="btn">구매하기</a>
+          <button id="restart-btn" class="btn">다시하기</button>
         </div>
       </div>
     </div>
