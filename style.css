@@ -28,7 +28,7 @@ body {
   max-height: 850px; /* Max-height for large screens */
   margin: 0 auto;
   position: relative;
-  background: url('bg.jpg') no-repeat center center / cover;
+
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.15); /* Add depth */
@@ -54,25 +54,45 @@ body {
 
 .logo {
   width: 160px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 h1, h2 {
   font-weight: 600;
-  color: #1a1a1a;
-}
-
-.content h1, .content h2 {
-    color: white;
+  color: #000066;
 }
 
 h1 {
   font-size: 1.4em;
-  margin-bottom: 10px; /* 20px에서 10px로 줄임 */
+  margin-bottom: 10px;
+}
+
+.content h1, .content h2 {
+    color: #000066;
+}
+
+.symbol-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Space between images */
+  margin-top: -20px;
+  max-width: 300px; /* Adjust as needed to control how many fit per row */
+}
+
+.symbol-images img {
+  width: 60px; /* Adjust image size as needed */
+  height: 60px;
+  object-fit: contain;
 }
 
 h2 {
     margin-top: 0;
+}
+
+p {
+  margin-top: 0px;
+  color: #000066;
 }
 
 
@@ -96,17 +116,20 @@ h2 {
 
 /* Start Screen Specifics */
 .form-group {
-    margin-bottom: 10px; /* 20px에서 10px로 줄임 */
-    text-align: left;
+    margin-bottom: 10px;
     border: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .form-label {
     display: block;
     margin-bottom: 12px;
     font-weight: 600;
-    color: #fff;
+    color: #000066;
     font-size: 1em;
     text-align: center;
 }
@@ -117,7 +140,13 @@ h2 {
 }
 
 .age-options {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px; /* Reduced gap for single row */
+}
+
+.age-options .option {
+    padding: 10px 5px; /* Smaller padding for smaller buttons */
+    font-size: 0.8em; /* Smaller font size */
 }
 
 .gender-options {
@@ -135,8 +164,7 @@ h2 {
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: white;
+    color: #000066;
     font-size: 0.95em;
     font-weight: 600;
     text-align: center;
@@ -159,7 +187,7 @@ h2 {
 
 /* Quiz Screen Specifics */
 #quiz-screen {
-    color: white;
+    color: #000066;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -194,6 +222,7 @@ h2 {
     text-align: center;
     max-width: 600px;
     line-height: 1.4;
+    color: #000066;
 }
 
 #answer-options {
@@ -205,10 +234,10 @@ h2 {
 }
 
 #answer-options button {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
+    background-color: #E0F2F7;
+    color: #000066;
     font-weight: 400;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid #B0D9E7;
 }
 
 #answer-options button:hover {
@@ -245,9 +274,8 @@ h2 {
 
 /* Result Screen Content Override */
 #result-screen .content {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.0);
+  color: #000066;
   overflow-y: auto; /* 스크롤바 다시 허용 */
   padding-bottom: 10px;
   flex-grow: 1;
@@ -260,10 +288,9 @@ h2 {
   width: 100%; /* Fill the container, padding will handle spacing */
   box-sizing: border-box;
   max-width: 500px;
-  background: transparent;
-  padding: 20px 20px 20px 20px; /* 상단 패딩 40px에서 20px로 줄임 */
-  color: white; /* Changed to white for readability */
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Added for readability */
+  background-color: transparent;
+  padding: 10px 10px 10px 10px;
+  color: #0000CD; /* Changed to deep blue for readability */
   
   /* Flex properties to align content to top-center */
   display: flex;
@@ -276,11 +303,13 @@ h2 {
 
 #result-screen .content h2,
 #result-screen .content #scent-name {
-    color: white;
+    color: #000066;
 }
 
 #result-screen .content #mbti-type {
-    color: white;
+    font-size: 2em;
+    font-weight: 600;
+    color: #000066;
 }
 
 /* Result Screen Score Display */
@@ -292,7 +321,7 @@ h2 {
 .scores-container h4 {
     font-size: 1.1em;
     font-weight: 600;
-    color: white;
+    color: #000066;
     margin-bottom: 5px;
     text-align: left;
 }

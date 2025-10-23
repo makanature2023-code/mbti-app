@@ -1,55 +1,18 @@
-
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
 const path = require('path');
 
+const app = express();
 const PORT = 8080;
 
-const server = http.createServer((req, res) => {
-    // Sanitize the requested URL to prevent directory traversal attacks
-    const decodedUrl = decodeURIComponent(req.url);
-    const sanitizedUrl = path.normalize(decodedUrl).replace(/^(\.\.[/\\])+/, '');
-    let filePath = path.join(__dirname, sanitizedUrl === '/' ? 'index.html' : sanitizedUrl);
+// Serve static files from the current directory
+app.use(express.static(__dirname));
 
-    const extname = String(path.extname(filePath)).toLowerCase();
-    const mimeTypes = {
-        '.html': 'text/html',
-        '.js': 'text/javascript',
-        '.css': 'text/css',
-        '.json': 'application/json',
-        '.png': 'image/png',
-        '.jpg': 'image/jpeg',
-        '.gif': 'image/gif',
-        '.svg': 'image/svg+xml',
-    };
-
-    const contentType = mimeTypes[extname] || 'application/octet-stream';
-
-    fs.readFile(filePath, (error, content) => {
-        if (error) {
-                        if (error.code == 'ENOENT' || error.code == 'EISDIR') {
-                // If the file is not found, it might be a PWA route. Serve index.html.
-                fs.readFile(path.join(__dirname, 'index.html'), (err, content) => {
-                    if (err) {
-                        res.writeHead(500);
-                        res.end('Sorry, check with the site admin for error: '+err.code+' ..\n');
-                    } else {
-                        res.writeHead(200, { 'Content-Type': 'text/html' });
-                        res.end(content, 'utf-8');
-                    }
-                });
-            } else {
-                res.writeHead(500);
-                res.end('Sorry, check with the site admin for error: '+error.code+' ..\n');
-            }
-        } else {
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(content, 'utf-8');
-        }
-    });
+// For any other requests, serve index.html (SPA routing)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-server.listen(PORT, '127.0.0.1', () => {
+app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
     console.log('Press Ctrl+C to quit.');
 });
