@@ -14,7 +14,7 @@ html {
 body {
   margin: 0;
   font-family: 'Pretendard', sans-serif;
-  background-color: #f0f2f5; /* A neutral background for the page */
+  background-color: #0A0A23; /* A neutral background for the page */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ body {
   max-height: 850px; /* Max-height for large screens */
   margin: 0 auto;
   position: relative;
-
+  background-color: #ffffff;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.15); /* Add depth */
