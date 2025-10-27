@@ -64,7 +64,8 @@ h1, h2 {
 
 h1 {
   font-size: 1.4em;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  margin-top: 35px;
 }
 
 .content h1, .content h2 {
@@ -76,14 +77,30 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px; /* Space between images */
-  margin-top: -20px;
-  max-width: 300px; /* Adjust as needed to control how many fit per row */
+  margin-top: -60px;
+  max-width: 440px; /* Adjust as needed to control how many fit per row */
 }
 
 .symbol-images img {
   width: 60px; /* Adjust image size as needed */
   height: 60px;
   object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(21%) sepia(35%) saturate(2335%) hue-rotate(171deg) brightness(92%) contrast(101%);
+}
+
+.symbol-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px; /* Give items a fixed width to help with wrapping */
+}
+
+.symbol-label {
+  font-size: 12px; /* Use a fixed small size */
+  color: #003f5c; /* Match symbol color */
+  margin-top: 4px;
+  font-weight: 600;
+  word-break: keep-all; /* Prevent breaking in the middle of a word */
 }
 
 h2 {
@@ -116,7 +133,7 @@ p {
 
 /* Start Screen Specifics */
 .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     border: none;
     padding: 0;
     display: flex;
@@ -149,9 +166,9 @@ p {
     font-size: 0.8em; /* Smaller font size */
 }
 
+
 .gender-options {
-    grid-template-columns: repeat(2, minmax(80px, 120px));
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .option-input {
@@ -435,4 +452,7 @@ a.btn {
     gap: 15px;
     width: 100%;
     margin-top: 20px;
+}
+#start-btn {
+  margin-top: 30px;
 }
