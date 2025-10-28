@@ -32,14 +32,54 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeQuestionSet = [];
 
     const scents = {
-        '백화산 (Mountain Mist)': { img: 'scent1.jpg', desc: '계획적이고 전략적인 당신에게, 숲의 고요함은 머릿속의 복잡함을 맑게 정리해 줍니다. 레몬유칼립투스의 깔끔한 향이 깊은 사고와 집중을 도와주는 숲속 명상 같은 시간.' },
-        '할미·할아비바위 (Eternal Love)': { img: 'scent8.jpg', desc: '섬세한 감성과 깊은 내면을 가진 당신에게, 장미와 바닐라의 향은 오래된 사랑의 기억처럼 따뜻하게 스며듭니다. 감정이 흐르고 머물 수 있는 공간 같은 향기.' },
-        '안흥진성 (Ocean Wake)': { img: 'scent2.jpg', desc: '분명하고 책임감 있는 당신에게, 바다의 기운이 새로운 결단의 힘이 되어줍니다. 페퍼민트와 유칼립투스가 머릿속을 정리하고 나아갈 방향을 선명하게 밝혀줍니다.' },
-        '안면송림 (Pine Whisper)': { img: 'scent3.jpg', desc: '배려 깊고 따뜻한 당신에게, 소나무 숲의 향은 마음에 잔잔한 안식을 선물합니다. 피톤치드의 부드러운 울림이 온기를 품은 안정감을 만들어줍니다.' },
-        '만리포 (Sunset Breeze)': { img: 'scent4.jpg', desc: '사람을 이끄는 따뜻한 리더십을 가진 당신에게, 노을빛 향기는 정서적 공감을 넓히는 다리입니다. 유자와 오렌지의 부드러운 감귤향은 마음을 열고 포용하게 합니다.' },
-        '신두사구 (Golden Sand)': { img: 'scent5.jpg', desc: '감성이 풍부한 당신에게, 따사로운 모래의 향기는 예술적인 상상을 자극합니다. 프랑킨센스와 샌달우드의 조화는 내면의 감정을 부드럽게 꺼내줍니다.' },
-        '가의도 (Island Bloom)': { img: 'scent6.jpg', desc: '아이디어가 넘치는 당신에게, 햇살 속 꽃내음은 영감을 가득 품은 아침 같은 향. 시트러스와 꽃향이 긍정 에너지를 더해줍니다.' },
-        '몽산해변 (Wave of Sleep)': { img: 'scent7.jpg', desc: '깊이 있는 통찰과 감성을 가진 당신에게, 파도에 잠긴 향기는 내면의 평화를 회복시켜 줍니다. 네롤리와 라벤더가 조용한 밤의 안식처가 되어줍니다.' },
+        '백화산 (Mountain Mist)': {
+            desc: {
+                INTJ: '계획적이고 깊은 사고를 하는 당신에게, 백화산의 맑은 공기는 생각의 숲을 정리해주는 향기입니다. 레몬과 편백의 투명한 향이 집중을 돕고 머리를 맑게 비워줍니다.',
+                ESFP: '감각적이고 자유로운 당신에게, 유칼립투스와 편백의 상쾌함이 에너지를 충전시킵니다. 마치 숲 속에서 맞는 이른 아침의 공기처럼 활력을 선사합니다.'
+            }
+        },
+        '안흥진성 (Ocean Wake)': {
+            desc: {
+                ESTJ: '분명하고 책임감 있는 당신에게, 바다의 바람 같은 페퍼민트 향이 머리를 맑게 하고 선명한 결단의 순간을 만들어 줍니다.',
+                INFP: '이상과 감정을 중시하는 당신에게, 프랑킨센스와 베르가못이 내면의 에너지를 깨워 흔들리는 마음을 다독이고 방향을 찾아줍니다.'
+            }
+        },
+        '안면송림 (Pine Whisper)': {
+            desc: {
+                ISFJ: '따뜻하고 배려 깊은 당신에게, 소나무 숲의 잔잔한 향이 마음의 안식을 선물합니다. 피톤치드의 부드러운 울림이 하루를 다독여줍니다.',
+                ENTP: '창의적이고 도전적인 당신에게, 베티버와 샌달우드의 깊은 향이 산만한 생각을 정리하고 새로운 아이디어의 리듬을 만들어줍니다.'
+            }
+        },
+        '만리포 (Sunset Breeze)': {
+            desc: {
+                ENFJ: '따뜻한 리더십을 가진 당신에게, 유자와 만다린의 감귤 향이 사람과의 연결을 부드럽게 합니다. 노을빛처럼 마음을 포근히 덮어주는 향기입니다.',
+                ISTP: '논리적이지만 감각적인 당신에게, 자몽의 산뜻함이 감정을 가볍게 터치해줍니다. 저녁 바람처럼 다가오는 향이 짧은 쉼표가 되어줍니다.'
+            }
+        },
+        '신두사구 (Golden Sand)': {
+            desc: {
+                ISFP: '예술적 감성이 풍부한 당신에게, 프랑킨센스와 샌달우드의 조화가 내면의 감정을 부드럽게 열어줍니다. 따뜻한 모래 위에서 깊게 숨쉬는 순간의 향기입니다.',
+                ENTJ: '결단력 있고 비전을 추구하는 당신에게, 샌달우드의 무게감과 클로브의 따뜻함이 중심을 잡아줍니다. 고요한 사구 위, 내면의 질서를 세우는 향입니다.'
+            }
+        },
+        '가의도 (Island Bloom)': {
+            desc: {
+                ENFP: '영감이 넘치는 당신에게, 자스민과 오렌지의 향이 햇살처럼 긍정 에너지를 채워줍니다. 세상을 향해 웃을 힘을 주는 향기입니다.',
+                ISTJ: '성실하고 실용적인 당신에게, 바닐라와 네롤리의 은은한 조화가 일상에 정돈된 쉼을 줍니다. 반복되는 하루 속에서도 안정감을 찾게 하는 향입니다.'
+            }
+        },
+        '몽산해변 (Wave of Sleep)': {
+            desc: {
+                INFJ: '깊이 있는 통찰과 감성을 가진 당신에게, 라벤더와 네롤리가 마음의 파도를 잠재워 줍니다. 조용한 밤, 자신을 회복시키는 향기입니다.',
+                ESTP: '즉흥적이고 감각적인 당신에게, 라벤더와 페퍼민트의 조화가 정신을 쉬게 합니다. 바쁜 하루 속 잠깐의 정지 버튼 같은 향입니다.'
+            }
+        },
+        '할미·할아비바위 (Eternal Love)': {
+            desc: {
+                INFP: '감성이 풍부한 당신에게, 로즈와 오스만투스의 달콤한 향이 오래된 사랑처럼 따뜻하게 스며듭니다. 감정을 안아주는 부드러운 위로의 향입니다.',
+                ESTP: '열정적이고 매력적인 당신에게, 제라늄과 일랑일랑의 관능적인 조화가 감정의 균형을 맞춰줍니다. 사랑과 자유를 동시에 표현하는 향입니다.'
+            }
+        }
     };
 
     const mbtiScentMapping = {
@@ -253,7 +293,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mbtiTypeDisplay.textContent = mbtiResult;
         scentName.textContent = finalScentName;
-        scentDescription.textContent = scentData.desc;
+        let selectedDescription = scentData.desc[mbtiResult];
+        // Fallback if a specific description for the MBTI is not found in the scentData.desc object
+        // This can happen if a scent is mapped to multiple MBTI types, but only one specific description is provided in the Word file.
+        // For now, if the specific MBTI description is not found, it will default to a generic message.
+        if (!selectedDescription) {
+            selectedDescription = '당신의 성향에 어울리는 향기입니다.'; // Generic fallback
+        }
+        scentDescription.textContent = selectedDescription;
 
 
         purchaseLink.href = 'https://smartstore.naver.com/makanature/category/1c62f089aed3466692e2b3357212df06?cp=1';
