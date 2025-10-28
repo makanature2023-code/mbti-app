@@ -63,9 +63,9 @@ h1, h2 {
 }
 
 h1 {
-  font-size: 1.4em;
-  margin-bottom: 30px;
-  margin-top: 35px;
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  margin-top: 70px;
 }
 
 .content h1, .content h2 {
@@ -133,7 +133,7 @@ p {
 
 /* Start Screen Specifics */
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     border: none;
     padding: 0;
     display: flex;
@@ -315,7 +315,7 @@ p {
   justify-content: flex-start; /* Align content to the top */
   align-items: center; /* Center items horizontally */
   flex-grow: 1; /* Take up available vertical space */
-  overflow-y: auto; /* 메인 화면 스크롤 가능 */
+  overflow-y: hidden; /* 메인 화면 스크롤 방지 */
 }
 
 #result-screen .content h2,
@@ -454,5 +454,5 @@ a.btn {
     margin-top: 20px;
 }
 #start-btn {
-  margin-top: 30px;
+  margin-top: 20px;
 }
