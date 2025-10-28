@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const questionText = document.getElementById('question-text');
     const answerOptionsContainer = document.getElementById('answer-options');
 
-    // Result elements
-    const resultImg = document.getElementById('result-img');
+
     const scentName = document.getElementById('scent-name');
     const mbtiTypeDisplay = document.getElementById('mbti-type');
     const scentDescription = document.getElementById('scent-description');
@@ -255,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mbtiTypeDisplay.textContent = mbtiResult;
         scentName.textContent = finalScentName;
         scentDescription.textContent = scentData.desc;
-        resultImg.src = `t8/사진/${scentData.img}`;
+
 
         purchaseLink.href = 'https://smartstore.naver.com/makanature/category/1c62f089aed3466692e2b3357212df06?cp=1';
 
