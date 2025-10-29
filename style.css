@@ -455,3 +455,55 @@ a.btn {
 #start-btn {
   margin-top: 50px;
 }
+
+/* Media Query for smaller screens */
+@media (max-width: 450px), (max-height: 750px) {
+  .logo {
+    width: 120px; /* Smaller logo */
+    margin-bottom: -10px;
+  }
+
+  .symbol-images {
+    margin-top: -40px; /* Reduce space above symbols */
+    gap: 5px; /* Reduce gap between symbols */
+    max-width: 320px; /* Ensure 4 items per row */
+  }
+
+  .symbol-item {
+    width: 70px; /* Adjust item width */
+  }
+
+  .symbol-images img {
+    width: 50px; /* Smaller symbol images */
+    height: 50px;
+  }
+
+  .symbol-label {
+    font-size: 11px; /* Slightly smaller text */
+  }
+
+  h1 {
+    font-size: 1.3em; /* Smaller heading */
+    margin-top: 20px; /* Reduce space */
+    margin-bottom: 15px;
+  }
+
+  .form-group {
+    margin-bottom: 10px; /* Reduce space between form groups */
+  }
+
+  .option {
+    padding: 12px 8px;
+    font-size: 0.9em;
+  }
+
+  .age-options .option {
+    padding: 8px 4px;
+    font-size: 0.75em;
+  }
+
+  #start-btn {
+    margin-top: 15px; /* Bring start button up */
+    padding: 12px;
+  }
+}
