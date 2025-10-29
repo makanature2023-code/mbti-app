@@ -465,7 +465,7 @@ a.btn {
   }
 
   .symbol-images {
-    margin-top: -40px; /* Reduce space above symbols */
+    margin-top: -45px; /* Reduce space above symbols */
     gap: 5px; /* Reduce gap between symbols */
     max-width: 320px; /* Ensure 4 items per row */
   }
@@ -485,16 +485,16 @@ a.btn {
 
   h1 {
     font-size: 1.3em; /* Smaller heading */
-    margin-top: 20px; /* Reduce space */
-    margin-bottom: 15px;
+    margin-top: 15px; /* Reduce space */
+    margin-bottom: 10px;
   }
 
   .form-group {
-    margin-bottom: 10px; /* Reduce space between form groups */
+    margin-bottom: 8px; /* Reduce space between form groups */
   }
 
   .option {
-    padding: 12px 8px;
+    padding: 10px 8px;
     font-size: 0.9em;
   }
 
@@ -504,7 +504,7 @@ a.btn {
   }
 
   #start-btn {
-    margin-top: 15px; /* Bring start button up */
+    margin-top: 10px; /* Bring start button up */
     padding: 12px;
   }
 }
