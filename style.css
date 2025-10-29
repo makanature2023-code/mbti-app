@@ -312,7 +312,7 @@ p {
   /* Flex properties to align content to top-center */
   display: flex;
   flex-direction: column;
-  justify-content: space-around; /* Distribute content vertically */
+  justify-content: space-between; /* Push content to top and bottom */
   align-items: center; /* Center items horizontally */
   flex-grow: 1; /* Take up available vertical space */
   overflow-y: hidden; /* 메인 화면 스크롤 방지 */
