@@ -24,7 +24,7 @@ body {
 .app-container {
   width: 100%;
   max-width: 500px;
-  height: 100vh; /* Full height on mobile */
+  height: 100dvh; /* Full height on mobile, using dynamic viewport height */
   max-height: 850px; /* Max-height for large screens */
   margin: 0 auto;
   position: relative;
