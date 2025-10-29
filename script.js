@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const appContainer = document.querySelector('.app-container');
+
+    function setAppHeight() {
+        appContainer.style.height = `${window.innerHeight}px`;
+    }
+
+    // Set height on initial load and on resize
+    setAppHeight();
+    window.addEventListener('resize', setAppHeight);
+
     // Screen elements
     const startScreen = document.getElementById('start-screen');
     const quizScreen = document.getElementById('quiz-screen');

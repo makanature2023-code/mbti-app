@@ -18,13 +18,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 
 .app-container {
   width: 100%;
   max-width: 500px;
-  height: 100dvh; /* Full height on mobile, using dynamic viewport height */
+  /* height is now set by JS */
   max-height: 850px; /* Max-height for large screens */
   margin: 0 auto;
   position: relative;
