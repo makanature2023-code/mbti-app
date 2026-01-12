@@ -1,0 +1,9 @@
+{
+  "name": "T8: 나의 향기 찾기",
+  "short_name": "T8 향기찾기",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "description": "간단한 테스트를 통해 당신의 성향에 맞는 태안8경 시그니처 향을 추천해 드립니다."
+}

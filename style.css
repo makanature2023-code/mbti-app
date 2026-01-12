@@ -1,0 +1,509 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600&display=swap');
+
+/* Basic styles from original file */
+
+body {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  background-color: #0A0A23; /* A neutral background for the page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+  /* height is now set by JS */
+  max-height: 850px; /* Max-height for large screens */
+  margin: 0 auto;
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15); /* Add depth */
+  display: flex; /* Use flexbox to manage content height */
+  flex-direction: column;
+}
+
+@media (min-width: 520px) {
+  .app-container {
+    height: 90vh;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  z-index: -1; /* Put it behind the content */
+}
+
+.logo {
+  width: 160px;
+  margin-bottom: 0px;
+}
+
+h1, h2 {
+  font-weight: 600;
+  color: #000066;
+}
+
+h1 {
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  margin-top: 70px;
+}
+
+.content h1, .content h2 {
+    color: #000066;
+}
+
+.symbol-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Space between images */
+  margin-top: -60px;
+  max-width: 440px; /* Adjust as needed to control how many fit per row */
+}
+
+.symbol-images img {
+  width: 60px; /* Adjust image size as needed */
+  height: 60px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(21%) sepia(35%) saturate(2335%) hue-rotate(171deg) brightness(92%) contrast(101%);
+}
+
+.symbol-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px; /* Give items a fixed width to help with wrapping */
+}
+
+.symbol-label {
+  font-size: 12px; /* Use a fixed small size */
+  color: #003f5c; /* Match symbol color */
+  margin-top: 4px;
+  font-weight: 600;
+  word-break: keep-all; /* Prevent breaking in the middle of a word */
+  white-space: nowrap; /* Force single line */
+}
+
+h2 {
+    margin-top: 0;
+}
+
+p {
+  margin-top: 0px;
+  color: #000066;
+}
+
+
+
+/* New styles for SPA structure */
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Start Screen Specifics */
+.form-group {
+    margin-bottom: 15px;
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #000066;
+    font-size: 1em;
+    text-align: center;
+}
+
+.options {
+    display: grid;
+    gap: 12px;
+}
+
+.age-options {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px; /* Reduced gap for single row */
+}
+
+.age-options .option {
+    padding: 10px 5px; /* Smaller padding for smaller buttons */
+    font-size: 0.8em; /* Smaller font size */
+}
+
+
+.gender-options {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.option-input {
+    display: none;
+}
+
+.option {
+    padding: 15px 10px;
+    border: 1px solid #777;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #000066;
+    font-size: 0.95em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.option:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    border-color: #aaa;
+}
+
+.option-input:checked + .option {
+    background-color: #0095ff;
+    color: white;
+    border-color: #0095ff;
+    box-shadow: 0 0 20px rgba(0, 149, 255, 0.6);
+    transform: translateY(-3px);
+}
+
+
+/* Quiz Screen Specifics */
+#quiz-screen {
+    color: #000066;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.quiz-header {
+    width: 90%;
+    max-width: 600px;
+    position: absolute;
+    top: 50px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#progress {
+    width: 0%;
+    height: 100%;
+    background-color: #2f80ed;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+#question-text {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.4;
+    color: #000066;
+}
+
+#answer-options {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 500px;
+    gap: 15px;
+}
+
+#answer-options button {
+    background-color: #E0F2F7;
+    color: #000066;
+    font-weight: 400;
+    border: 1px solid #B0D9E7;
+}
+
+#answer-options button:hover {
+    background: #e0e0e0;
+}
+.result-intro {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+#scent-name {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 20px;
+}
+
+#mbti-type {
+    font-size: 5.0em;
+    font-weight: 700;
+    color: #003f5c;
+    margin: 0 0 10px;
+    line-height: 1;
+}
+
+#scent-description {
+    line-height: 1.7;
+    margin-top: 15px;
+    font-size: 1.0em;
+    max-width: 90%;
+}
+
+/* Result Screen Content Override */
+#result-screen .content {
+  background: rgba(0, 0, 0, 0.0);
+  color: #000066;
+  overflow-y: hidden; /* 스크롤바 비활성화 */
+  padding-bottom: 10px;
+  flex-grow: 1;
+  justify-content: center; /* 수직 중앙 정렬 */
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%; /* Fill the container, padding will handle spacing */
+  box-sizing: border-box;
+  max-width: 500px;
+  background-color: transparent;
+  padding: 10px 10px 10px 10px;
+  color: #0000CD; /* Changed to deep blue for readability */
+  
+  /* Flex properties to align content to top-center */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push content to top and bottom */
+  align-items: center; /* Center items horizontally */
+  flex-grow: 1; /* Take up available vertical space */
+  overflow-y: hidden; /* 메인 화면 스크롤 방지 */
+}
+
+#result-screen .content h2,
+#result-screen .content #scent-name {
+    color: #000066;
+}
+
+#result-screen .content #mbti-type {
+    font-size: 2em;
+    font-weight: 600;
+    color: #000066;
+}
+
+/* Result Screen Score Display */
+.scores-container {
+    margin-top: 30px; /* Increased margin */
+    width: 100%;
+}
+
+.scores-container h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #000066;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.score-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+    font-size: 0.9em;
+}
+
+.dichotomy {
+    width: 60px;
+    font-weight: 600;
+}
+
+.score-bar-container {
+    flex-grow: 1;
+    height: 12px;
+    background-color: #e0e0e0;
+    border-radius: 6px;
+    margin: 0 10px;
+}
+
+.score-bar {
+    height: 100%;
+    background-color: #0095ff;
+    border-radius: 6px;
+    width: 0%; /* Will be set by JS */
+    transition: width 0.5s ease-in-out;
+}
+
+.score-value {
+    width: 40px;
+    text-align: right;
+    font-weight: 600;
+}
+
+/* Result Screen Oil Image Styles */
+.mbti-visual-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 15px; /* Adjusted margin */
+}
+
+.mbti-visual-container img {
+    height: 60px;
+    width: auto;
+}
+
+#result-oil-front {
+    margin-right: 15px;
+}
+
+#result-oil-back {
+    margin-left: 15px;
+}
+
+#result-screen .mbti-type-display {
+    margin: 0;
+    font-size: 1em; /* Reset font size */
+}
+
+*:focus {
+    outline: none;
+}
+
+/* Unified Button Styles */
+.btn {
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Pretendard', sans-serif; /* Ensure consistent font */
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.5; /* Ensure consistent vertical alignment */
+    text-align: center;
+    text-decoration: none; /* For <a> tags */
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #4CAF50; /* Unified green color */
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn:disabled,
+.btn.disabled { /* also add a class for <a> tags */
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Force font-family for all btn elements */
+button.btn,
+a.btn {
+    font-family: 'Pretendard', sans-serif;
+}
+
+/* Layout for result buttons */
+.result-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-top: 60px;
+}
+#start-btn {
+  margin-top: 50px;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 450px), (max-height: 750px) {
+  .logo {
+    width: 120px; /* Smaller logo */
+    margin-bottom: -10px;
+  }
+
+  .symbol-images {
+    margin-top: -45px; /* Reduce space above symbols */
+    gap: 5px; /* Reduce gap between symbols */
+    max-width: 320px; /* Ensure 4 items per row */
+  }
+
+  .symbol-item {
+    width: 70px; /* Adjust item width */
+  }
+
+  .symbol-images img {
+    width: 50px; /* Smaller symbol images */
+    height: 50px;
+  }
+
+  .symbol-label {
+    font-size: 11px; /* Slightly smaller text */
+  }
+
+  h1 {
+    font-size: 1.3em; /* Smaller heading */
+    margin-top: 15px; /* Reduce space */
+    margin-bottom: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 8px; /* Reduce space between form groups */
+  }
+
+  .option {
+    padding: 10px 8px;
+    font-size: 0.9em;
+  }
+
+  .age-options .option {
+    padding: 8px 4px;
+    font-size: 0.75em;
+  }
+
+  #start-btn {
+    margin-top: 10px; /* Bring start button up */
+    padding: 12px;
+  }
+}

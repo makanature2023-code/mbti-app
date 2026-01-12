@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAKA NATURE | 나의 향기 찾기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css?v=1700000007" />
+
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <div class="app-container">
+    <div id="start-screen" class="screen active">
+      <div class="content">
+        <img src="logo.png?v=1700000000" alt="MAKA NATURE" class="logo">
+        <div class="symbol-images">
+          <div class="symbol-item">
+            <img src="symbol/1.png" alt="백화산">
+            <span class="symbol-label">백화산</span>
+          </div>
+          <div class="symbol-item">
+            <img src="symbol/2.png" alt="안흥진성">
+            <span class="symbol-label">안흥진성</span>
+          </div>
+          <div class="symbol-item">
+            <img src="symbol/3.png" alt="안면송림">
+            <span class="symbol-label">안면송림</span>
+          </div>
+          <div class="symbol-item">
+            <img src="symbol/4.png" alt="만리포">
+            <span class="symbol-label">만리포</span>
+          </div>
+          <div class="symbol-item">
+            <img src="symbol/5.png" alt="신두사구">
+            <span class="symbol-label">신두사구</span>
+          </div>
+          <div class="symbol-item">
+            <img src="symbol/6.png" alt="가의도">
+            <span class="symbol-label">가의도</span>
+          </div>
+          <div class="symbol-item">
+            <img src="symbol/7.png" alt="몽산해변">
+            <span class="symbol-label">몽산해변</span>
+          </div>
+          <div class="symbol-item">
+            <img src="symbol/8.png" alt="할미·할아비바위">
+            <span class="symbol-label">할미·할아비바위</span>
+          </div>
+        </div>
+        <h1>MBTI 검사하고, 나의 향기 찾기</h1>
+
+        <fieldset class="form-group">
+          <div class="options gender-options">
+            <input type="radio" id="gender-male" name="gender" value="male" class="option-input" />
+            <label for="gender-male" class="option">남성</label>
+            <input type="radio" id="gender-female" name="gender" value="female" class="option-input" />
+            <label for="gender-female" class="option">여성</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <div class="options age-options">
+            <input type="radio" id="age-10s" name="age" value="10s" class="option-input" />
+            <label for="age-10s" class="option">10대</label>
+            <input type="radio" id="age-20s" name="age" value="20s" class="option-input" />
+            <label for="age-20s" class="option">20대</label>
+            <input type="radio" id="age-30s" name="age" value="30s" class="option-input" />
+            <label for="age-30s" class="option">30대</label>
+            <input type="radio" id="age-40s" name="age" value="40s" class="option-input" />
+            <label for="age-40s" class="option">40대</label>
+            <input type="radio" id="age-50s" name="age" value="50s" class="option-input" />
+            <label for="age-50s" class="option">50대</label>
+            <input type="radio" id="age-60s" name="age" value="60s+" class="option-input" />
+            <label for="age-60s" class="option">60대</label>
+          </div>
+        </fieldset>
+
+        <button id="start-btn" class="btn" disabled>시작하기</button>
+      </div>
+    </div>
+
+    <div id="quiz-screen" class="screen">
+      <div class="content">
+        <div id="progress-bar"><div id="progress"></div></div>
+        <p id="question-text"></p>
+        <div id="answer-options" class="options-vertical"></div>
+      </div>
+    </div>
+
+    <div id="result-screen" class="screen">
+      <div class="content">
+        <div class="result-card">
+          
+          <div class="result-text">
+            <p class="result-intro">당신의 성향에 어울리는 향기는</p>
+            <h2 id="scent-name"></h2>
+            <div class="mbti-visual-container">
+                          <p class="mbti-type-display"><span id="mbti-type"></span></p>            </div>
+            <p id="scent-description"></p>
+          </div>
+          <div class="scores-container">
+            <h4>나의 성향 점수</h4>
+            <div class="score-item">
+              <span class="dichotomy">외향 (E)</span>
+              <div class="score-bar-container">
+                <div class="score-bar" id="score-e"></div>
+              </div>
+              <span class="score-value" id="score-e-value"></span>
+            </div>
+            <div class="score-item">
+              <span class="dichotomy">내향 (I)</span>
+              <div class="score-bar-container">
+                <div class="score-bar" id="score-i"></div>
+              </div>
+              <span class="score-value" id="score-i-value"></span>
+            </div>
+            <div class="score-item">
+              <span class="dichotomy">감각 (S)</span>
+              <div class="score-bar-container">
+                <div class="score-bar" id="score-s"></div>
+              </div>
+              <span class="score-value" id="score-s-value"></span>
+            </div>
+            <div class="score-item">
+              <span class="dichotomy">직관 (N)</span>
+              <div class="score-bar-container">
+                <div class="score-bar" id="score-n"></div>
+              </div>
+              <span class="score-value" id="score-n-value"></span>
+            </div>
+            <div class="score-item">
+              <span class="dichotomy">사고 (T)</span>
+              <div class="score-bar-container">
+                <div class="score-bar" id="score-t"></div>
+              </div>
+              <span class="score-value" id="score-t-value"></span>
+            </div>
+            <div class="score-item">
+              <span class="dichotomy">감정 (F)</span>
+              <div class="score-bar-container">
+                <div class="score-bar" id="score-f"></div>
+              </div>
+              <span class="score-value" id="score-f-value"></span>
+            </div>
+            <div class="score-item">
+              <span class="dichotomy">판단 (J)</span>
+              <div class="score-bar-container">
+                <div class="score-bar" id="score-j"></div>
+              </div>
+              <span class="score-value" id="score-j-value"></span>
+            </div>
+            <div class="score-item">
+              <span class="dichotomy">인식 (P)</span>
+              <div class="score-bar-container">
+                <div class="score-bar" id="score-p"></div>
+              </div>
+              <span class="score-value" id="score-p-value"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-buttons">
+          <a id="purchase-link" href="#" target="_blank" class="btn">구매하기</a>
+          <button id="restart-btn" class="btn">다시하기</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <script src="script.js?v=1700000007"></script>
+</body>
+</html>
